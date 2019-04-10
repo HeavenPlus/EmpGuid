@@ -1,0 +1,87 @@
+body {
+	padding: 50px;
+}
+
+.pad {
+	margin-top: 50px;
+	height: 471px;
+}
+
+.content {
+	position: absolute;
+	left: 30%;
+	top: 150px;
+	display: none;
+	border: 1px solid #dfdfdf;
+	width: 480px;
+	height: 321px;
+	background: #fff url("/EmpGuid/images/login_left.png") no-repeat;
+}
+
+.login_switch {
+	position: absolute;
+	cursor: pointer;
+	left: 398px;
+	top: 7px;
+}
+
+.login_form {
+	margin-left: 236px;
+	margin-top: 70px;
+	line-height: 20px;
+	font-size: 14px;
+}
+
+.login_btn {
+	position: relative;
+	margin-left: 55px;
+	width: 70px;
+}
+
+.bg {
+	position: absolute;
+	left: 0;
+	top: 0;
+	background-color: gray;
+	width: 100%;
+	height: 100%;
+	display: none;
+	opacity: 0.8;
+}
+
+.reg_btn {
+	position: relative;
+	left: 15px;
+	width: 70px;
+}
+
+.content_gl {
+	position: absolute;
+	left: 30%;
+	top: 150px;
+	display: none;
+	border: 1px solid #dfdfdf;
+	width: 480px;
+	height: 321px;
+	background: #fff url("/EmpGuid/images/login_left.png") no-repeat;
+}
+
+.gl_switch {
+	position: absolute;
+	cursor: pointer;
+	left: 398px;
+	top: 7px;
+}
+
+.gl_form {
+	margin-left: 236px;
+	margin-top: 70px;
+	line-height: 20px;
+	font-size: 14px;
+}
+
+.gl_btn {
+	position: relative;
+	margin-left: 56px;
+	width: 155px;
+}
