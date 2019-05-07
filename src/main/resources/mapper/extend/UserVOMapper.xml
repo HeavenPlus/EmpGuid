@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.heaven.dao.extend.UserVOMapper">
+	<select id="selectByName" parameterType="String" resultMap="UserVOResultMap">
+		select * from user where username = #{username}
+	</select>
+	<!-- 定义结果集 -->
+	<resultMap type="com.heaven.bean.extend.UserVO" id="UserVOResultMap">
+		<id column="id" property="id" />
+		<result column="username" property="username" />
+		<result column="password" property="password" />
+		<result column="email" property="email" />
+		<result column="gender" property="gender" />
+		<association column="type_id" property="userType"
+			select="com.heaven.dao.UserTypeMapper.selectByPrimaryKey">
+		</association>
+	</resultMap>
+</mapper>
