@@ -34,8 +34,10 @@
       <property name="enableSubPackages" value="true" />
     </javaClientGenerator>
 	<!-- 映射配置--> 
-    <table tableName="announcement" domainObjectName="Announcement" ></table>
-    <table tableName="recruit" domainObjectName="Recruit" ></table>
+<!--     <table tableName="announcement" domainObjectName="Announcement" ></table> -->
+<!--     <table tableName="recruit" domainObjectName="Recruit" ></table> -->
     <table tableName="user" domainObjectName="User" ></table>
+<!--     <table tableName="user_type" domainObjectName="UserType" ></table> -->
+<!--     <table tableName="general" domainObjectName="General" ></table> -->
   </context>
 </generatorConfiguration>

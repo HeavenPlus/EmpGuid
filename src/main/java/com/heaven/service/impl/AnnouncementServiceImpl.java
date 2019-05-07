@@ -5,27 +5,35 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.github.pagehelper.PageHelper;
 import com.heaven.bean.Announcement;
 import com.heaven.bean.AnnouncementExample;
 import com.heaven.dao.AnnouncementMapper;
+import com.heaven.dao.extend.AnnouncementVOMapper;
 import com.heaven.service.IAnnouncementService;
-import com.heaven.utils.PageUtil;
 @Service
 public class AnnouncementServiceImpl implements IAnnouncementService {
 	@Autowired
 	private AnnouncementMapper announcementMapper;
+	@Autowired
+	private AnnouncementVOMapper announcementVOMapper;
 	@Override
 	public List<Announcement> findAll() {
 		AnnouncementExample example = new AnnouncementExample();
 		return announcementMapper.selectByExampleWithBLOBs(example);
 	}
 	@Override
-	public PageUtil<Announcement> selectArticleList(int pageNum, int pageSize) {
-		PageHelper.startPage(pageNum,pageSize);
-		AnnouncementExample example = new AnnouncementExample();
-		List<Announcement> list = this.announcementMapper.selectByExampleWithBLOBs(example);
-		return new PageUtil<>(list);
+	public List<Announcement> findByRecruId(Integer recruId) {
+		
+		return announcementVOMapper.selectByRecruId(recruId);
 	}
-
+	@Override
+	public Announcement findById(Integer id) {
+		return announcementMapper.selectByPrimaryKey(id);
+	}
+	@Override
+	public List<Announcement> selectEight() {
+		return announcementVOMapper.selectEight();
+	}
+	
+	
 }

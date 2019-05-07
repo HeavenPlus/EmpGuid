@@ -3,7 +3,6 @@ package com.heaven.service;
 import java.util.List;
 
 import com.heaven.bean.Announcement;
-import com.heaven.utils.PageUtil;
 
 public interface IAnnouncementService {
 	/**
@@ -12,5 +11,22 @@ public interface IAnnouncementService {
 	 */
 	List<Announcement> findAll(); 
 	
-	PageUtil<Announcement> selectArticleList(int pageNum, int pageSize);
+	/**
+	 * 根据recruId查询
+	 * @return
+	 */
+	List<Announcement> findByRecruId(Integer recruId);
+	
+	/**
+	 * 根据id查询
+	 * @param id
+	 * @return
+	 */
+	Announcement findById(Integer id);
+	
+	/**
+	 * 查询每个分类前8条数据
+	 * @return
+	 */
+	List<Announcement> selectEight();
 }

@@ -6,7 +6,7 @@
 	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		<ul class="nav navbar-nav" style="font-size:20px">
 			<li class="first_page">
-				 <a href="#">平台首页</a>
+				 <a href="/EmpGuid/recruit/index">平台首页</a>
 			</li>
 			<li class="dropdown">
 				 <a href="#" class="dropdown-toggle" data-toggle="dropdown">就业指导<strong class="caret"></strong></a>
@@ -41,9 +41,18 @@
 			</div> <button type="submit" class="btn btn-default">搜索</button>
 		</form>
 		<ul class="nav navbar-nav navbar-right">
-			<li>
-				 <a href="#" class="log">登录/注册</a>
-			</li>
+			<#if username??>
+				<li class="dropdown">
+				 	<a href="#" class="dropdown-toggle" data-toggle="dropdown">用户：${username}<strong class="caret"></strong></a>
+					<ul class="dropdown-menu" style="min-width:100%;">
+						<li>
+							 <a href="/EmpGuid/recruit/index">注销</a>
+						</li>
+					</ul>
+				</li>
+			<#else>
+				<li><a href="#" class="log">登陆/注册</a></li>
+			</#if>
 		</ul>
 	</div>
 </nav>

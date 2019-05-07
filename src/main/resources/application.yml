@@ -3,13 +3,16 @@ server:
     context-path: /EmpGuid
 spring:
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: root
     url: jdbc:mysql://127.0.0.1/empguid?serverTimezone=GMT%2B8&characterEncoding=utf-8&useSSL=false
+logging:
+  level:
+    com.*: debug 
 mybatis:
   mapper-locations:
-  - classpath:mapper/*Mapper.xml
+  - classpath:/mapper/**/*.xml 
 pagehelper:
   helperDialect: mysql
   reasonable: true

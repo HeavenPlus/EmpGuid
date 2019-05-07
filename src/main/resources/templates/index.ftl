@@ -7,11 +7,11 @@
 	<div class="row clearfix">
 		<div class="col-md-12 column">
 			<#include "nav.ftl">
-			<div class="carousel slide" id="carousel-845940">
+			<div class="carousel slide" id="carousel-845940" data-ride="carousel" data-interval="5000">
 				<ol class="carousel-indicators">
-					<li class="active" data-slide-to="0" data-target="#carousel-845940">
+					<li data-slide-to="0" data-target="#carousel-845940">
 					</li>
-					<li data-slide-to="1" data-target="#carousel-845940">
+					<li data-slide-to="1" data-target="#carousel-845940" class="active">
 					</li>
 					<li data-slide-to="2" data-target="#carousel-845940">
 					</li>
@@ -39,26 +39,26 @@
 								 <a href="#panel-799133" data-toggle="tab">实习岗位</a>
 							</li>
 							<li>
-								 <a href="#panel-799133" data-toggle="tab">企业招聘</a>
+								 <a href="#panel-799134" data-toggle="tab">企业招聘</a>
 							</li>
 							<li>
-								 <a href="#panel-799133" data-toggle="tab">校园招聘</a>
+								 <a href="#panel-799135" data-toggle="tab">校园招聘</a>
 							</li>
 							<li>
-								 <a href="#panel-799133" data-toggle="tab">校园宣讲会</a>
+								 <a href="#panel-799136" data-toggle="tab">校园宣讲会</a>
 							</li>
 						</ul>
-						<div class="tab-content" >
+						<div class="tab-content">
 							<div class="tab-pane active" id="panel-913032">
 								<div class="panel panel-default">
-									<div class="panel-body" style="padding:20px;">
+									<div class="panel-body" style="padding:20px;" style="overflow:hidden;">
 										<table class="table table-hover table-striped">
 											<tbody style="font-size:14px;">
 												<#list announcementList as announcement>
 													<#if announcement.recruidId==1>
-														<tr>
+														<tr style="cursor: pointer;" onclick="location.href='/EmpGuid/recruit/recruitDetails?recruitName=招聘公告&id='+${announcement.id};">
 															<td>${announcement.name}</td>
-															<td style="text-align:right;">${announcement.date?string('yyyy-MM-dd HH:mm:ss')}</td>
+															<td style="text-align:right;">${announcement.date?string('yyyy-MM-dd')}</td>
 														</tr>
 													</#if>
 												</#list>
@@ -66,47 +66,93 @@
 										</table>
 									</div>
 									<div class="panel-footer" style="height:55px;">
-										<ul class="pagination" style="margin-top:0px;">
-											<#if currentPage lte 1>
-												<li class=disabled><a>上一页</a></li>
-											<#else>
-												<li><a href="/EmpGuid/index?page=${currentPage-1}">上一页</a></li>
-											</#if>
-											<#list 1..totalPage as index>
-												<#if currentPage==index>
-													<li class=disabled><a>${index}</a></li>
-												<#else>
-													<li><a href="/EmpGuid/index?page=${index}">${index}</a></li>
-												</#if>
-											</#list>
-											<#if currentPage gte totalPage>
-												<li class="disabled"><a>下一页</a></li>
-											<#else>
-												<li><a href="/EmpGuid/index?page=${currentPage+1}">下一页</a></li>
-											</#if>
-										</ul>
+										<a href="/EmpGuid/recruit/more?recruidId=1&recruitName=招聘公告" class="more">More</a>
 									</div>
 								</div>
 							</div>
 							<div class="tab-pane" id="panel-799133">
-								<p>
-									Howdy, I'm in Section 2.
-								</p>
+								<div class="panel panel-default">
+									<div class="panel-body" style="padding:20px;">
+										<table class="table table-hover table-striped">
+											<tbody style="font-size:14px;">
+												<#list announcementList as announcement>
+													<#if announcement.recruidId==2>
+														<tr style="cursor: pointer;" onclick="location.href='/EmpGuid/recruit/recruitDetails?recruitName=实习岗位&id='+${announcement.id};">
+															<td>${announcement.name}</td>
+															<td style="text-align:right;">${announcement.date?string('yyyy-MM-dd')}</td>
+														</tr>
+													</#if>
+												</#list>
+											</tbody>
+										</table>
+									</div>
+									<div class="panel-footer" style="height:55px;">
+										<a href="/EmpGuid/recruit/more?recruidId=2&recruitName=实习岗位" class="more">More</a>
+									</div>
+								</div>
 							</div>
-							<div class="tab-pane" id="panel-799133">
-								<p>
-									Howdy, I'm in Section 3.
-								</p>
+							<div class="tab-pane" id="panel-799134">
+								<div class="panel panel-default">
+									<div class="panel-body" style="padding:20px;">
+										<table class="table table-hover table-striped">
+											<tbody style="font-size:14px;">
+												<#list announcementList as announcement>
+													<#if announcement.recruidId==3>
+														<tr style="cursor: pointer;" onclick="location.href='/EmpGuid/recruit/recruitDetails?recruitName=企业招聘&id='+${announcement.id};">
+															<td>${announcement.name}</td>
+															<td style="text-align:right;">${announcement.date?string('yyyy-MM-dd')}</td>
+														</tr>
+													</#if>
+												</#list>
+											</tbody>
+										</table>
+									</div>
+									<div class="panel-footer" style="height:55px;">
+										<a href="/EmpGuid/recruit/more?recruidId=3&recruitName=企业招聘" class="more">More</a>
+									</div>
+								</div>
 							</div>
-							<div class="tab-pane" id="panel-799133">
-								<p>
-									Howdy, I'm in Section 4.
-								</p>
+							<div class="tab-pane" id="panel-799135">
+								<div class="panel panel-default">
+									<div class="panel-body" style="padding:20px;">
+										<table class="table table-hover table-striped">
+											<tbody style="font-size:14px;">
+												<#list announcementList as announcement>
+													<#if announcement.recruidId==4>
+														<tr style="cursor: pointer;" onclick="location.href='/EmpGuid/recruit/recruitDetails?recruitName=校园招聘&id='+${announcement.id};">
+															<td>${announcement.name}</td>
+															<td style="text-align:right;">${announcement.date?string('yyyy-MM-dd')}</td>
+														</tr>
+													</#if>
+												</#list>
+											</tbody>
+										</table>
+									</div>
+									<div class="panel-footer" style="height:55px;">
+										<a href="EmpGuid/recruit/more?recruidId=4&recruitName=校园招聘" class="more">More</a>
+									</div>
+								</div>
 							</div>
-							<div class="tab-pane" id="panel-799133">
-								<p>
-									Howdy, I'm in Section 5.
-								</p>
+							<div class="tab-pane" id="panel-799136">
+								<div class="panel panel-default">
+									<div class="panel-body" style="padding:20px;">
+										<table class="table table-hover table-striped">
+											<tbody style="font-size:14px;">
+												<#list announcementList as announcement>
+													<#if announcement.recruidId=5>
+														<tr style="cursor: pointer;" onclick="location.href='/EmpGuid/recruit/recruitDetails?recruitName=校园宣讲会&id='+${announcement.id};">
+															<td>${announcement.name}</td>
+															<td style="text-align:right;">${announcement.date?string('yyyy-MM-dd')}</td>
+														</tr>
+													</#if>
+												</#list>
+											</tbody>
+										</table>
+									</div>
+									<div class="panel-footer" style="height:55px;">
+										<a href="/EmpGuid/recruit/more?recruidId=5&recruitName=校园宣讲会" class="more">More</a>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -121,166 +167,56 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-md-12 column" style="margin-top:20px;border:1px solid #dfdfdf;height:500px;padding:0px">
+		<div class="col-md-8 column" style="margin-top:20px;border:1px solid #dfdfdf;height:485px;padding:0px">
 			<nav class="navbar navbar-default" role="navigation" >
 				<div class="navbar-header">
 					 <span class="navbar-brand" style="font-size:30px">招聘简章</span>
 				</div>
 			</nav>
-			<div class="col-md-4 column" style="font-size:20px">
-				<ul class="list-unstyled">
-					<li>
-						Lorem ipsum dolor sit amet
-					</li>
-					<li>
-						Consectetur adipiscing elit
-					</li>
-					<li>
-						Integer molestie lorem at massa
-					</li>
-					<li>
-						Facilisis in pretium nisl aliquet
-					</li>
-					<li>
-						Nulla volutpat aliquam velit
-					</li>
-					<li>
-						Faucibus porta lacus fringilla vel
-					</li>
-					<li>
-						Aenean sit amet erat nunc
-					</li>
-					<li>
-						Eget porttitor lorem
-					</li>
-				</ul>
+			<div class="panel panel-default">
+				<div class="panel-body" style="padding:20px;">
+					<table class="table table-hover table-striped">
+						<tbody style="font-size:14px;">
+							<#list generalList as general>
+								<tr style="cursor: pointer;" onclick="location.href='/EmpGuid/recruit/generalDetails?id='+${general.id};">
+									<td>${general.title}</td>
+									<td style="text-align:right;">${general.date?string('yyyy-MM-dd')}</td>
+								</tr>
+							</#list>
+						</tbody>
+					</table>
+				</div>
+				<div class="panel-footer" style="height:55px;">
+					<a href="/EmpGuid/recruit/generalMore" class="general_more">More</a>
+				</div>
 			</div>
-			<div class="col-md-4 column" style="font-size:20px">
-				<ul class="list-unstyled">
-					<li>
-						Lorem ipsum dolor sit amet
+		</div>
+		<div class="col-md-4 column" style="margin-top:20px;border:1px solid #dfdfdf;height:485px;padding:0px">
+			<div class="carousel slide" id="carousel-623013" data-ride="carousel" data-interval="5000">
+				<ol class="carousel-indicators">
+					<li data-slide-to="0" data-target="#carousel-623013">
 					</li>
-					<li>
-						Consectetur adipiscing elit
+					<li data-slide-to="1" data-target="#carousel-623013" class="active">
 					</li>
-					<li>
-						Integer molestie lorem at massa
+					<li data-slide-to="2" data-target="#carousel-623013">
 					</li>
-					<li>
-						Facilisis in pretium nisl aliquet
-					</li>
-					<li>
-						Nulla volutpat aliquam velit
-					</li>
-					<li>
-						Faucibus porta lacus fringilla vel
-					</li>
-					<li>
-						Aenean sit amet erat nunc
-					</li>
-					<li>
-						Eget porttitor lorem
-					</li>
-				</ul>
+				</ol>
+				<div class="carousel-inner">
+					<div class="item">
+						<img alt="" style="height:485px;width:100%;" src="/EmpGuid/images/general1.jpg" />
+					</div>
+					<div class="item active">
+						<img alt="" style="height:485px;width:100%;" src="/EmpGuid/images/general2.jpg" />
+					</div>
+					<div class="item">
+						<img alt="" style="height:485px;width:100%;" src="/EmpGuid/images/general3.jpg" />
+					</div>
+				</div> <a class="left carousel-control" href="#carousel-623013" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control" href="#carousel-623013" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
 			</div>
-			<div class="col-md-4 column" style="font-size:20px">
-				<ul class="list-unstyled">
-					<li>
-						Lorem ipsum dolor sit amet
-					</li>
-					<li>
-						Consectetur adipiscing elit
-					</li>
-					<li>
-						Integer molestie lorem at massa
-					</li>
-					<li>
-						Facilisis in pretium nisl aliquet
-					</li>
-					<li>
-						Nulla volutpat aliquam velit
-					</li>
-					<li>
-						Faucibus porta lacus fringilla vel
-					</li>
-					<li>
-						Aenean sit amet erat nunc
-					</li>
-					<li>
-						Eget porttitor lorem
-					</li>
-				</ul>
-			</div>
-			<ul class="pagination" style="margin-top:140px;margin-left:50px;">
-				<li>
-					 <a href="#">Prev</a>
-				</li>
-				<li>
-					 <a href="#">1</a>
-				</li>
-				<li>
-					 <a href="#">2</a>
-				</li>
-				<li>
-					 <a href="#">3</a>
-				</li>
-				<li>
-					 <a href="#">4</a>
-				</li>
-				<li>
-					 <a href="#">5</a>
-				</li>
-				<li>
-					 <a href="#">Next</a>
-				</li>
-			</ul>
 		</div>
 	</div>
 </div>
 <#include "login_form.ftl">
-<script type="text/javascript">
-	$(function(){
-		$(".first_page").mouseover(function(){
-			$(this).addClass("active");
-		})
-		$(".first_page").mouseleave(function(){
-			$(this).removeClass("active");
-		})
-	})
-	$(function () {
-		$(".dropdown").mouseover(function () {
-			$(this).addClass("open");
-		});
-		$(".dropdown").mouseleave(function(){
-			$(this).removeClass("open");
-		})
-	})	
-	function bodyScroll(event){  
-		event.preventDefault();  
-	} 
-	$(function(){
-		$(".log").click(function(){
-			$(".bg").fadeIn(500);
-			$(".content").css("display","block");
-			document.body.addEventListener('touchmove',bodyScroll,false);  
-			$('body').css({'position':'fixed',"width":"100%"});
-			$(".login_switch").click(function(){
-				$(".content").css("display","none");
-				$(".content_gl").css("display","block");		
-			})
-			$(".gl_switch").click(function(){
-				$(".content_gl").css("display","none");
-				$(".content").css("display","block");		
-			})
-		})
-		$(".bg").click(function(){
-			$(".bg").fadeOut(500);
-			$(".content").css("display","none");
-			$(".content_gl").css("display","none");
-			document.body.removeEventListener('touchmove',bodyScroll,false);   
-			$("body").css({"position":"initial","height":"auto"}); 
-		})
-	})
-</script>
+<script type="text/javascript" src="/EmpGuid/js/index.js"></script>
 </body>
 </html>
