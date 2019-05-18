@@ -34,6 +34,18 @@ public class AnnouncementServiceImpl implements IAnnouncementService {
 	public List<Announcement> selectEight() {
 		return announcementVOMapper.selectEight();
 	}
+	@Override
+	public void deleteById(Integer id) {
+		announcementMapper.deleteByPrimaryKey(id);
+	}
+	@Override
+	public void update(Announcement anno) {
+		announcementVOMapper.update(anno);
+	}
+	@Override
+	public void insert(Announcement anno) {
+		announcementVOMapper.save(anno);
+	}
 	
 	
 }

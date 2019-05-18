@@ -216,6 +216,7 @@
 		</div>
 	</div>
 </div>
+<#include "footer.ftl">
 <#include "login_form.ftl">
 <script type="text/javascript" src="/EmpGuid/js/index.js"></script>
 </body>

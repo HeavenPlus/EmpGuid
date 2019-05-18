@@ -29,6 +29,6 @@ public class IndexController {
 		map.put("announcementList", announcementList);
 		map.put("generalList", generalList);
 		map.put("username", null);
-		return new ModelAndView("index", map);
+		return new ModelAndView("reception/index", map);
 	}
 }

@@ -42,7 +42,7 @@ public class RecruitController {
 		map.put("totalPage", pageInfo.getPages());
 		map.put("recruId", recruId);
 		map.put("recruitName", recruitName);
-		return new ModelAndView("recruit_more", map);
+		return new ModelAndView("reception/recruit_more", map);
 	}
 
 	@GetMapping("/recruitDetails")
@@ -52,7 +52,7 @@ public class RecruitController {
 		Announcement announcement = announcementService.findById(Integer.parseInt(id));
 		map.put("announcement", announcement);
 		map.put("recruitName", recruitName);
-		return new ModelAndView("recruit_detail", map);
+		return new ModelAndView("reception/recruit_detail", map);
 	}
 
 	@GetMapping("/generalMore")
@@ -65,7 +65,7 @@ public class RecruitController {
 		map.put("generalList", list);
 		map.put("currentPage", page);
 		map.put("totalPage", pageInfo.getPages());
-		return new ModelAndView("general_more", map);
+		return new ModelAndView("reception/general_more", map);
 	}
 
 	@GetMapping("/generalDetails")
@@ -73,6 +73,6 @@ public class RecruitController {
 		String id = request.getParameter("id");
 		General general = generalService.findById(Integer.parseInt(id));
 		map.put("general", general);
-		return new ModelAndView("general_detail", map);
+		return new ModelAndView("reception/general_detail", map);
 	}
 }

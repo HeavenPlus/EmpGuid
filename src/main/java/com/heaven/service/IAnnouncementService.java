@@ -29,4 +29,19 @@ public interface IAnnouncementService {
 	 * @return
 	 */
 	List<Announcement> selectEight();
+	/**
+	 * 根据id删除
+	 * @param id
+	 */
+	void deleteById(Integer id);
+	/**
+	 * 修改
+	 * @param anno
+	 */
+	void update(Announcement anno);
+	/**
+	 * 保存
+	 * @param anno
+	 */
+	void insert(Announcement anno);
 }

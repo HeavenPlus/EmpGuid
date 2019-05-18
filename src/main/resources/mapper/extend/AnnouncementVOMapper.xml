@@ -6,12 +6,13 @@
 		select * from announcement where recruid_id = #{recruId}
 	</select>
 	<select id="selectEight" resultMap="announcementResultMap">
-		select * from announcement as a
+		select * from announcement as
+		a
 		WHERE 8> (
-				 select count(*)
-		         from announcement 
-		         where recruid_id = a.recruid_id
-		         and id > a.id)
+		select count(*)
+		from announcement
+		where recruid_id = a.recruid_id
+		and id > a.id)
 		order by a.id desc;
 	</select>
 	<resultMap type="com.heaven.bean.Announcement" id="announcementResultMap">
@@ -22,4 +23,14 @@
 		<result column="date" property="date" />
 		<result column="recruid_id" property="recruidId" />
 	</resultMap>
+
+	<update id="update" parameterType="com.heaven.bean.Announcement">
+		update announcement set name =
+		#{name},author=#{author},content=#{content},recruid_id=#{recruidId}
+		where id = #{id}
+	</update>
+	<insert id="save" parameterType="com.heaven.bean.Announcement" useGeneratedKeys="true"
+		keyProperty="id">
+		insert into announcement (name, author,content,recruid_id) values(#{name},#{author},#{content}, #{recruidId})
+	</insert>
 </mapper>

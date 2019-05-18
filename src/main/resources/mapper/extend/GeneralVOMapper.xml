@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.heaven.dao.extend.GeneralVOMapper">
-	<select id="selectById" parameterType="java.lang.Integer"
-		resultType="com.heaven.bean.General">
-		select * from general where id = #{id}
-	</select>
+	<update id="update" parameterType="com.heaven.bean.General">
+		update general set title = #{title},author=#{author},content=#{content} where id = #{id}
+	</update>
+	<insert id="save" parameterType="com.heaven.bean.General" useGeneratedKeys="true"
+		keyProperty="id">
+		insert into general (title, author,content) values(#{title},#{author},#{content})
+	</insert>
 </mapper>

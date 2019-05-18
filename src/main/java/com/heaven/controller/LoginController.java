@@ -41,7 +41,7 @@ public class LoginController {
 		map.put("announcementList", announcementList);
 		map.put("generalList", generalList);
 		map.put("username", username);
-		return new ModelAndView("index", map);
+		return new ModelAndView("reception/index", map);
 	}
 
 	@PostMapping("/login")

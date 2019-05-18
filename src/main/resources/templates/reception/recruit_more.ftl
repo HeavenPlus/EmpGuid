@@ -31,16 +31,16 @@
 		</div>
 		<ul class="breadcrumb">
 			<li><a href="/EmpGuid/recruit/index">主页</a></li>
-			<li class="active">招聘简章</li>
+			<li class="active">${recruitName}</li>
 		</ul>
 	</div>
 	<div class="rec_con">		
 		<table class="table table-hover table-striped">
 			<tbody>
-				<#list generalList as general>
-					<tr style="cursor: pointer;" onclick="location.href='/EmpGuid/recruit/generalDetails?id='+${general.id};">
-						<td>${general.title}</td>
-						<td style="text-align:right;">${general.date?string('yyyy-MM-dd')}</td>
+				<#list announcementList as announcement>
+					<tr style="cursor: pointer;" onclick="location.href='/EmpGuid/recruit/recruitDetails?id='+${announcement.id}+'&recruitName=${recruitName}';">
+						<td>${announcement.name}</td>
+						<td style="text-align:right;">${announcement.date?string('yyyy-MM-dd')}</td>
 					</tr>
 				</#list>
 			</tbody>
@@ -49,22 +49,24 @@
 			<#if currentPage lte 1>
 				<li class=disabled><a>上一页</a></li>
 			<#else>
-				<li><a href="/EmpGuid/recruit/generalMore?page=${currentPage-1}">上一页</a></li>
+				<li><a href="/EmpGuid/recruit/more?page=${currentPage-1}&recruidId=${recruId}">上一页</a></li>
 			</#if>
 			<#list 1..totalPage as index>
 				<#if currentPage==index>
 					<li class=disabled><a>${index}</a></li>
 				<#else>
-					<li><a href="/EmpGuid/recruit/generalMore?page=${index}">${index}</a></li>
+					<li><a href="/EmpGuid/recruit/more?page=${index}&recruidId=${recruId}">${index}</a></li>
 				</#if>
 			</#list>
 			<#if currentPage gte totalPage>
 				<li class="disabled"><a>下一页</a></li>
 			<#else>
-				<li><a href="/EmpGuid/recruit/generalMore?page=${currentPage+1}">下一页</a></li>
+				<li><a href="/EmpGuid/recruit/more?page=${currentPage+1}&recruidId=${recruId}">下一页</a></li>
 			</#if>
 		</ul>
 	</div>
+	<br>
+	<#include "footer.ftl">
 	<#include "login_form.ftl">
 </body>
 </html>

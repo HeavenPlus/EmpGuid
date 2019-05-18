@@ -12,12 +12,12 @@
 				 <a href="#" class="dropdown-toggle" data-toggle="dropdown">就业指导<strong class="caret"></strong></a>
 				<ul class="dropdown-menu" style="min-width:100%;">
 					<li>
-						 <a href="#">简历指导</a>
+						 <a href="/EmpGuid/guidInfo/guidInfo?typeId=1&guidName=简历指导">简历指导</a>
 					</li>
 					<li class="divider">
 					</li>
 					<li>
-						 <a href="#">面试指导</a>
+						 <a href="/EmpGuid/guidInfo/guidInfo?typeId=2&guidName=面试指导">面试指导</a>
 					</li>
 				</ul>
 			</li>
@@ -25,12 +25,12 @@
 				 <a href="#" class="dropdown-toggle" data-toggle="dropdown">学习平台<strong class="caret"></strong></a>
 				<ul class="dropdown-menu" style="min-width:100%;">
 					<li>
-						 <a href="#">文章</a>
+						 <a href="/EmpGuid/study/selectAllNotes">技术文章</a>
 					</li>
 					<li class="divider">
 					</li>
 					<li>
-						 <a href="#">视频</a>
+						 <a href="#">热门视频</a>
 					</li>
 				</ul>
 			</li>

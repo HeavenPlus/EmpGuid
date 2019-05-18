@@ -29,7 +29,7 @@ public class RegistController {
 	private UserServiceImpl userService;
 	@GetMapping("/regist")
 	public ModelAndView regist(){
-		return new ModelAndView("regist");
+		return new ModelAndView("reception/regist");
 	}
 	@PostMapping("/checkRegist")
 	public void checkRegist(HttpServletRequest request,HttpServletResponse response) throws IOException{
@@ -64,6 +64,6 @@ public class RegistController {
 	public ModelAndView doRegist(){
 		User us = getUser();
 		userService.save(us);
-		return new ModelAndView("index");
+		return new ModelAndView("reception/index");
 	}
 }

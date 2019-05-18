@@ -26,7 +26,19 @@ public class GeneralServiceImpl implements IGeneralService {
 	}
 	@Override
 	public General findById(Integer id) {
-		return generalVOMapper.selectById(id);
+		return generalMapper.selectByPrimaryKey(id);
+	}
+	@Override
+	public void deleteById(Integer id) {
+		generalMapper.deleteByPrimaryKey(id);
+	}
+	@Override
+	public void update(General general) {
+		generalVOMapper.update(general);
+	}
+	@Override
+	public void save(General general) {
+		generalVOMapper.save(general);
 	}
 
 }

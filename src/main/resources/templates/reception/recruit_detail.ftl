@@ -45,8 +45,8 @@
 		</div>
 		<ul class="breadcrumb">
 			<li><a href="/EmpGuid/recruit/index">主页</a></li>
-			<li><a href="/EmpGuid/recruit/generalMore">招聘简章</a></li>
-			<li class="active">招聘简章详情</li>
+			<li><a href="/EmpGuid/recruit/more?recruidId=${announcement.recruidId}&recruitName=${recruitName}">${recruitName}</a></li>
+			<li class="active">${recruitName}详情</li>
 		</ul>
 	</div>
 	<div class="detail_con">		
@@ -54,15 +54,16 @@
 			<table class="table table-striped">
 				<tbody>
 					<tr>
-						<td colspan="3" style="text-align:center;font-size:18px;line-height:30px;">${general.title}</td>
-						<td style="text-align:right;font-size:12px;line-height:30px;">作者：${general.author}</td>
-						<td style="text-align:right;font-size:12px;line-height:30px;">日期：${general.date?string('yyyy-MM-dd')}</td>
+						<td colspan="3" style="text-align:center;font-size:18px;line-height:30px;">${announcement.name}</td>
+						<td style="text-align:right;font-size:12px;line-height:30px;">作者：${announcement.author}</td>
+						<td style="text-align:right;font-size:12px;line-height:30px;">日期：${announcement.date?string('yyyy-MM-dd')}</td>
 					</tr>
 				</tbody>
 			</table>
 		</div>		
 	</div>
-	<pre class="rec_text">${general.content}</pre>
+	<pre class="rec_text">${announcement.content}</pre>
+	<#include "footer.ftl">
 	<#include "login_form.ftl">
 </body>
 </html>
