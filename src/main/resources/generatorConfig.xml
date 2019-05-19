@@ -34,10 +34,14 @@
       <property name="enableSubPackages" value="true" />
     </javaClientGenerator>
 	<!-- 映射配置--> 
-    <table tableName="announcement" domainObjectName="Announcement" ></table>
-    <table tableName="general" domainObjectName="General" ></table>
-    <table tableName="guid_info" domainObjectName="GuidInfo" ></table>
+<!--     <table tableName="announcement" domainObjectName="Announcement" ></table> -->
+<!--     <table tableName="general" domainObjectName="General" ></table> -->
+<!--     <table tableName="guid_info" domainObjectName="GuidInfo" ></table> -->
 <!--     <table tableName="guid_type" domainObjectName="GuidType" ></table> -->
-    <table tableName="notes" domainObjectName="Notes" ></table>
+<!--     <table tableName="notes" domainObjectName="Notes" ></table> -->
+    <table tableName="tec_type" domainObjectName="TecType" ></table>
+    <table tableName="video_type" domainObjectName="VideoType" ></table>
+    <table tableName="video" domainObjectName="Video" ></table>
+    <table tableName="video_comment" domainObjectName="VideoComment" ></table>
   </context>
 </generatorConfiguration>

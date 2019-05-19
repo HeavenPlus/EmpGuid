@@ -1,0 +1,32 @@
+.left_banner{
+	padding:0;
+	background-color:rgb(51,51,51);
+}
+.left_banner li{
+	list-style-type:none;
+	width:200px;
+	height:80px;
+	line-height:80px;
+	text-align:center;
+	font-size:16px;
+	color:#fff;
+	cursor:pointer;
+}
+.act{
+	background-color:rgb(192,192,192);
+}
+.tab{
+	padding:0;
+	width:940px;
+	height:400px;
+	margin-left:200px;
+	border:1px solid #dfdfdf;
+}
+.tec_category{
+	padding:0;
+}
+.tec_category li{
+	list-style-type:none;
+	float:left;
+	margin-left:10px;
+}

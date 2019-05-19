@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.heaven.dao.extend.GuidInfoVOMapper">
+	<select id="selectByTypeId" parameterType="java.lang.Integer"
+		resultType="com.heaven.bean.GuidInfo">
+		select * from guid_info where type_id = #{typeId}
+	</select>
+	<update id="update" parameterType="com.heaven.bean.GuidInfo">
+		update guid_info set title = #{title},author=#{author},content=#{content} where id = #{id}
+	</update>
+	<insert id="save" parameterType="com.heaven.bean.GuidInfo" useGeneratedKeys="true"
+		keyProperty="id">
+		insert into guid_info (title, author,content,type_id) values(#{title},#{author},#{content},#{typeId})
+	</insert>
+</mapper>

@@ -30,7 +30,7 @@
 					<li class="divider">
 					</li>
 					<li>
-						 <a href="#">热门视频</a>
+						 <a href="/EmpGuid/study/videos">热门视频</a>
 					</li>
 				</ul>
 			</li>
