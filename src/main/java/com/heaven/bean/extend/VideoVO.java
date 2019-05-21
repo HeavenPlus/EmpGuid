@@ -2,17 +2,14 @@ package com.heaven.bean.extend;
 
 import java.util.List;
 
-import com.heaven.bean.VideoComment;
-import com.heaven.bean.VideoType;
-
 public class VideoVO {
 	private Integer id;
 	private String title;
 	private String description;
 	private String path;
 	private String image;
-	private VideoType videoType;
-	private List<VideoComment> videoComments;
+	private VideoTypeVO videoTypeVO;
+	private List<VideoCommentVO> videoCommentVOs;
 
 	public Integer getId() {
 		return id;
@@ -54,26 +51,28 @@ public class VideoVO {
 		this.image = image;
 	}
 
-	public VideoType getVideoType() {
-		return videoType;
+	public VideoTypeVO getVideoTypeVO() {
+		return videoTypeVO;
 	}
 
-	public void setVideoType(VideoType videoType) {
-		this.videoType = videoType;
+	public void setVideoTypeVO(VideoTypeVO videoTypeVO) {
+		this.videoTypeVO = videoTypeVO;
 	}
 
-	public List<VideoComment> getVideoComments() {
-		return videoComments;
+	public List<VideoCommentVO> getVideoCommentVOs() {
+		return videoCommentVOs;
 	}
 
-	public void setVideoComments(List<VideoComment> videoComments) {
-		this.videoComments = videoComments;
+	public void setVideoCommentVOs(List<VideoCommentVO> videoCommentVOs) {
+		this.videoCommentVOs = videoCommentVOs;
 	}
 
 	@Override
 	public String toString() {
 		return "VideoVO [id=" + id + ", title=" + title + ", description=" + description + ", path=" + path + ", image="
-				+ image + ", videoType=" + videoType + ", videoComments=" + videoComments + "]";
+				+ image + ", videoTypeVO=" + videoTypeVO + ", videoCommentVOs=" + videoCommentVOs + "]";
 	}
+
+
 
 }

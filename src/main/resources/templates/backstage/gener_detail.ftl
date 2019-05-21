@@ -9,7 +9,7 @@
 					 <label>标题</label><input id="title" name="title" type="text" class="form-control" value="${general.title}"/>
 				</div>
 				<div class="form-group">
-					 <label>作者</label><input id="author" name="author" type="text" class="form-control" value="${general.author}"/>
+					 <label>来源</label><input id="author" name="author" type="text" class="form-control" value="${general.author}"/>
 				</div>
 				<div class="form-group">
 					 <label>内容</label><pre id="content" name="content" contenteditable="true" class="form-control" style="height:300px;resize:none;">${general.content}</pre>
@@ -28,7 +28,7 @@
 							$.messager.alert('错误信息','标题不能为空','error');
 							return;
 						}else if($.trim(vAuthor.value)==""){
-							$.messager.alert('错误信息','作者不能为空','error');
+							$.messager.alert('错误信息','来源不能为空','error');
 							return;
 						}else if($.trim(vContent.innerHTML)==""){
 							$.messager.alert('错误信息','内容不能为空','error');

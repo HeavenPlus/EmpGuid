@@ -32,4 +32,9 @@ public interface INotesService {
 	 * @param notes
 	 */
 	void save(Notes notes);
+	/**
+	 * 随机查询
+	 * @return
+	 */
+	List<Notes> selectByRandom();
 }

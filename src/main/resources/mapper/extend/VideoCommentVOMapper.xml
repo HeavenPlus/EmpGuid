@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.heaven.dao.extend.VideoCommentVOMapper">
+	<select id="selectAll" resultMap="videoCommentVOMap">
+		select * from video_comment
+	</select>
+	<!-- 定义结果集 -->
+	<resultMap type="com.heaven.bean.extend.VideoCommentVO" id="videoCommentVOMap">
+		<id column="id" property="id" />
+		<result column="content" property="content"/>
+		<result column="date" property="date"/>
+		<result column="username" property="username" />
+		<association property="videoVO" column="video_id" javaType="com.heaven.bean.extend.VideoVO" 
+			select="com.heaven.dao.extend.VideoVOMapper.selectById">
+		</association>
+	</resultMap>
+	<select id="selectByVideoId" parameterType="int" resultMap="videoCommentVOMap">
+		select * from video_comment where video_id = #{videoId} 
+	</select>
+</mapper>

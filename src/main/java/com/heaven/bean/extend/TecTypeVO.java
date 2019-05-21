@@ -2,12 +2,10 @@ package com.heaven.bean.extend;
 
 import java.util.List;
 
-import com.heaven.bean.VideoType;
-
 public class TecTypeVO {
 	private Integer id;
 	private String typeName;
-	private List<VideoType> videoTypes;
+	private List<VideoTypeVO> videoTypeVOs;
 
 	public Integer getId() {
 		return id;
@@ -25,17 +23,18 @@ public class TecTypeVO {
 		this.typeName = typeName;
 	}
 
-	public List<VideoType> getVideoTypes() {
-		return videoTypes;
+	public List<VideoTypeVO> getVideoTypeVOs() {
+		return videoTypeVOs;
 	}
 
-	public void setVideoTypes(List<VideoType> videoTypes) {
-		this.videoTypes = videoTypes;
+	public void setVideoTypeVOs(List<VideoTypeVO> videoTypeVOs) {
+		this.videoTypeVOs = videoTypeVOs;
 	}
 
 	@Override
 	public String toString() {
-		return "TecTypeVO [id=" + id + ", typeName=" + typeName + ", videoTypes=" + videoTypes + "]";
+		return "TecTypeVO [id=" + id + ", typeName=" + typeName + ", videoTypeVOs=" + videoTypeVOs + "]";
 	}
+
 
 }

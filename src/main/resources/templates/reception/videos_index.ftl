@@ -13,166 +13,26 @@
 	<div style="width:1140px;height:400px;margin:0 auto;overflow:hidden;">
 		<#include "video_banner.ftl">
 	</div>
-	<div style="width:1140px;margin:50px auto;text-align:center;">
-		<h4>前沿技术</h4><hr>
-		<div class="row clearfix">
-			<div class="col-md-4">
-				<div class="thumbnail">
-					<img alt="200x200" src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/600/200/city/default.jpg" />
-					<div class="caption">
-						<h3>Thumbnail label</h3>
-						<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4">
-				<div class="thumbnail">
-					<img alt="200x200" src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/600/200/city/default.jpg" />
-					<div class="caption">
-						<h3>Thumbnail label</h3>
-						<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4">
-				<div class="thumbnail">
-					<img alt="200x200" src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/600/200/city/default.jpg" />
-					<div class="caption">
-						<h3>Thumbnail label</h3>
-						<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-					</div>
-				</div>
+	<#list tecTypeVORandom3List as tecTypeList>
+		<div style="width:1140px;margin:50px auto;text-align:center;">
+			<h4>${tecTypeList.typeName}</h4><hr>
+			<div class="row clearfix">
+				<#list tecTypeList.videoTypeVOs as videoTypeList>
+					<#list videoTypeList.videoVOs as videoList>
+						<div class="col-md-4">
+							<div class="thumbnail" style="height:360px;width:300px;">
+								<img width="300" src="/EmpGuid/upload/${videoList.image}" />
+								<div class="caption">
+									<h5><strong>${videoList.title}</strong></h5>
+									<h6 style="text-indent:2em;line-height:18px;">${videoList.description}</h6>
+								</div>
+							</div>
+						</div>
+					</#list>
+				</#list>>
 			</div>
 		</div>
-	</div>
-	<div style="width:1140px;margin:50px auto;text-align:center;">
-		<h4>前端开发</h4><hr>
-		<div class="row clearfix">
-			<div class="col-md-4">
-				<div class="thumbnail">
-					<img alt="200x200" src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/600/200/city/default.jpg" />
-					<div class="caption">
-						<h3>Thumbnail label</h3>
-						<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4">
-				<div class="thumbnail">
-					<img alt="200x200" src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/600/200/city/default.jpg" />
-					<div class="caption">
-						<h3>Thumbnail label</h3>
-						<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4">
-				<div class="thumbnail">
-					<img alt="200x200" src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/600/200/city/default.jpg" />
-					<div class="caption">
-						<h3>Thumbnail label</h3>
-						<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div style="width:1140px;margin:50px auto;text-align:center;">
-		<h4>后端开发</h4><hr>
-		<div class="row clearfix">
-			<div class="col-md-4">
-				<div class="thumbnail">
-					<img alt="200x200" src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/600/200/city/default.jpg" />
-					<div class="caption">
-						<h3>Thumbnail label</h3>
-						<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4">
-				<div class="thumbnail">
-					<img alt="200x200" src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/600/200/city/default.jpg" />
-					<div class="caption">
-						<h3>Thumbnail label</h3>
-						<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4">
-				<div class="thumbnail">
-					<img alt="200x200" src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/600/200/city/default.jpg" />
-					<div class="caption">
-						<h3>Thumbnail label</h3>
-						<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div style="width:1140px;margin:50px auto;text-align:center;">
-		<h4>移动开发</h4><hr>
-		<div class="row clearfix">
-			<div class="col-md-4">
-				<div class="thumbnail">
-					<img alt="200x200" src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/600/200/city/default.jpg" />
-					<div class="caption">
-						<h3>Thumbnail label</h3>
-						<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4">
-				<div class="thumbnail">
-					<img alt="200x200" src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/600/200/city/default.jpg" />
-					<div class="caption">
-						<h3>Thumbnail label</h3>
-						<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4">
-				<div class="thumbnail">
-					<img alt="200x200" src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/600/200/city/default.jpg" />
-					<div class="caption">
-						<h3>Thumbnail label</h3>
-						<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div style="width:1140px;margin:50px auto;text-align:center;">
-		<h4>数据库技术</h4><hr>
-		<div class="row clearfix">
-			<div class="col-md-4">
-				<div class="thumbnail">
-					<img alt="200x200" src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/600/200/city/default.jpg" />
-					<div class="caption">
-						<h3>Thumbnail label</h3>
-						<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4">
-				<div class="thumbnail">
-					<img alt="200x200" src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/600/200/city/default.jpg" />
-					<div class="caption">
-						<h3>Thumbnail label</h3>
-						<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4">
-				<div class="thumbnail">
-					<img alt="200x200" src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/600/200/city/default.jpg" />
-					<div class="caption">
-						<h3>Thumbnail label</h3>
-						<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+	</#list>
 	<#include "footer.ftl">
 	<#include "login_form.ftl">
 	<script type="text/javascript" src="/EmpGuid/js/index.js"></script>

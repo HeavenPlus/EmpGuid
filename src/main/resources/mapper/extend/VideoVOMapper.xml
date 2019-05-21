@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.heaven.dao.extend.VideoVOMapper">
+	<select id="selectAll" resultMap="videoVOMap">
+		select * from video
+	</select>
+	<!-- 定义结果集 -->
+	<resultMap type="com.heaven.bean.extend.VideoVO" id="videoVOMap">
+		<id column="id" property="id" />
+		<result column="title" property="title"/>
+		<result column="description" property="description"/>
+		<result column="path" property="path" />
+		<result column="image" property="image" />
+		<association property="videoTypeVO" column="video_type_id" javaType="com.heaven.bean.extend.VideoTypeVO" 
+			select="com.heaven.dao.extend.VideoTypeVOMapper.selectById">
+		</association>
+		<collection property="videoCommentVOs" column="id" javaType="ArrayList"
+			select="com.heaven.dao.extend.VideoCommentVOMapper.selectByVideoId">
+		</collection>
+	</resultMap>
+	<select id="selectByVideoTypeId" parameterType="int" resultMap="videoVOMap">
+		select * from video where video_type_id = #{videoTypeId} 
+	</select>
+	<select id="selectById" parameterType="int" resultType="com.heaven.bean.extend.VideoVO">
+		select * from video where id = #{id}
+	</select>
+	<select id="selectRandom2" parameterType="int" resultMap="videoVOMap">
+		select * from video where video_type_id = #{videoTypeId} order by rand() limit 2
+	</select>
+	<select id="selectRandom3" parameterType="int" resultMap="videoVOMap">
+		select * from video where video_type_id = #{videoTypeId} order by rand() limit 2
+	</select>
+</mapper>

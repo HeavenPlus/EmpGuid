@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default" role="navigation">
+<nav class="navbar navbar-default" role="navigation" id="banner">
 	<div class="navbar-header">
 		 <span class="navbar-brand" style="font-size:25px">网站导航</span>
 	</div>
@@ -8,29 +8,19 @@
 			<li class="first_page">
 				 <a href="/EmpGuid/recruit/index">平台首页</a>
 			</li>
-			<li class="dropdown">
-				 <a href="#" class="dropdown-toggle" data-toggle="dropdown">就业指导<strong class="caret"></strong></a>
-				<ul class="dropdown-menu" style="min-width:100%;">
-					<li>
-						 <a href="/EmpGuid/guidInfo/guidInfo?typeId=1&guidName=简历指导">简历指导</a>
-					</li>
-					<li class="divider">
-					</li>
-					<li>
-						 <a href="/EmpGuid/guidInfo/guidInfo?typeId=2&guidName=面试指导">面试指导</a>
-					</li>
-				</ul>
+			<li class="first_page">
+				 <a href="/EmpGuid/loginInterceptor/showGuidInfo"`>就业指导</a>
 			</li>
 			<li class="dropdown">
 				 <a href="#" class="dropdown-toggle" data-toggle="dropdown">学习平台<strong class="caret"></strong></a>
 				<ul class="dropdown-menu" style="min-width:100%;">
 					<li>
-						 <a href="/EmpGuid/study/selectAllNotes">技术文章</a>
+						 <a href="/EmpGuid/loginInterceptor/showNotes">技术文章</a>
 					</li>
 					<li class="divider">
 					</li>
 					<li>
-						 <a href="/EmpGuid/study/videos">热门视频</a>
+						 <a href="/EmpGuid/loginInterceptor/videos">热门视频</a>
 					</li>
 				</ul>
 			</li>
@@ -46,12 +36,12 @@
 				 	<a href="#" class="dropdown-toggle" data-toggle="dropdown">用户：${username}<strong class="caret"></strong></a>
 					<ul class="dropdown-menu" style="min-width:100%;">
 						<li>
-							 <a href="/EmpGuid/recruit/index">注销</a>
+							 <a href="/EmpGuid/logout">注销</a>
 						</li>
 					</ul>
 				</li>
 			<#else>
-				<li><a href="#" class="log">登陆/注册</a></li>
+				<li><a href="#" class="log">登录/注册</a></li>
 			</#if>
 		</ul>
 	</div>

@@ -2,14 +2,11 @@ package com.heaven.bean.extend;
 
 import java.util.List;
 
-import com.heaven.bean.TecType;
-import com.heaven.bean.Video;
-
 public class VideoTypeVO {
 	private Integer id;
 	private String typeName;
-	private TecType tecType;
-	private List<Video> videos;
+	private TecTypeVO tecTypeVO;
+	private List<VideoVO> videoVOs;
 	public Integer getId() {
 		return id;
 	}
@@ -26,27 +23,30 @@ public class VideoTypeVO {
 		this.typeName = typeName;
 	}
 
-	public TecType getTecType() {
-		return tecType;
+	
+
+	public List<VideoVO> getVideoVOs() {
+		return videoVOs;
 	}
 
-	public void setTecType(TecType tecType) {
-		this.tecType = tecType;
+	public void setVideoVOs(List<VideoVO> videoVOs) {
+		this.videoVOs = videoVOs;
 	}
 
-	public List<Video> getVideos() {
-		return videos;
+	public TecTypeVO getTecTypeVO() {
+		return tecTypeVO;
 	}
 
-	public void setVideos(List<Video> videos) {
-		this.videos = videos;
+	public void setTecTypeVO(TecTypeVO tecTypeVO) {
+		this.tecTypeVO = tecTypeVO;
 	}
 
 	@Override
 	public String toString() {
-		return "VideoTypeVO [id=" + id + ", typeName=" + typeName + ", tecType=" + tecType + ", videos=" + videos + "]";
+		return "VideoTypeVO [id=" + id + ", typeName=" + typeName + ", tecTypeVO=" + tecTypeVO + ", videoVOs="
+				+ videoVOs + "]";
 	}
 
-	
+
 
 }

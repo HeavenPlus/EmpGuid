@@ -43,4 +43,9 @@ public class NotesServiceImpl implements INotesService{
 		notesVOMapper.save(notes);
 	}
 
+	@Override
+	public List<Notes> selectByRandom() {
+		return notesVOMapper.selectByRandom();
+	}
+
 }

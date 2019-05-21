@@ -55,7 +55,7 @@
 				<tbody>
 					<tr>
 						<td colspan="3" style="text-align:center;font-size:18px;line-height:30px;">${general.title}</td>
-						<td style="text-align:right;font-size:12px;line-height:30px;">作者：${general.author}</td>
+						<td style="text-align:right;font-size:12px;line-height:30px;">来源：${general.author}</td>
 						<td style="text-align:right;font-size:12px;line-height:30px;">日期：${general.date?string('yyyy-MM-dd')}</td>
 					</tr>
 				</tbody>

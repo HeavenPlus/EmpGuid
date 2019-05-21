@@ -2,14 +2,12 @@ package com.heaven.bean.extend;
 
 import java.util.Date;
 
-import com.heaven.bean.Video;
-
 public class VideoCommentVO {
 	private Integer id;
 	private String content;
 	private Date date;
 	private String username;
-	private Video video;
+	private VideoVO videoVO;
 
 	public Integer getId() {
 		return id;
@@ -43,18 +41,20 @@ public class VideoCommentVO {
 		this.username = username;
 	}
 
-	public Video getVideo() {
-		return video;
+	public VideoVO getVideoVO() {
+		return videoVO;
 	}
 
-	public void setVideo(Video video) {
-		this.video = video;
+	public void setVideoVO(VideoVO videoVO) {
+		this.videoVO = videoVO;
 	}
 
 	@Override
 	public String toString() {
 		return "VideoCommentVO [id=" + id + ", content=" + content + ", date=" + date + ", username=" + username
-				+ ", video=" + video + "]";
+				+ ", videoVO=" + videoVO + "]";
 	}
+
+
 
 }

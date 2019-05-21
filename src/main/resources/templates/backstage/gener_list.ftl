@@ -7,7 +7,7 @@
 				<thead>
 					<tr>
 						<th style="text-align:center;width:450px;">标题</th>
-						<th style="text-align:center;width:150px;">作者</th>
+						<th style="text-align:center;width:150px;">来源</th>
 						<th colspan="2" style="text-align:center;width:200px;">操作</th>
 					</tr>
 				</thead>

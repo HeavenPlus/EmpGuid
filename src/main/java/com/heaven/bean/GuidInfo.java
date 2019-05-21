@@ -200,4 +200,11 @@ public class GuidInfo {
     public void setContent(String content) {
         this.content = content == null ? null : content.trim();
     }
+
+	@Override
+	public String toString() {
+		return "GuidInfo [id=" + id + ", title=" + title + ", author=" + author + ", date=" + date + ", typeId="
+				+ typeId + ", content=" + content + "]";
+	}
+    
 }

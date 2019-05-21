@@ -24,6 +24,7 @@ public class StudyController {
 	@Autowired
 	private INotesService notesService;
 	
+	
 	@GetMapping("/selectAllNotes")
 	public ModelAndView selectAllNotes(@RequestParam(value = "page", defaultValue = "1") Integer page,
 			Map<String, Object> map){
@@ -44,9 +45,6 @@ public class StudyController {
 		map.put("notes", notes);
 		return new ModelAndView("reception/notes_detail", map);
 	}
-	@GetMapping("/videos")
-	public ModelAndView videos(){
-		return new ModelAndView("reception/videos_index");
-	}
+
 	
 }

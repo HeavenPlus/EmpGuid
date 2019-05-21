@@ -9,7 +9,7 @@
 			</tr>
 			<tr>
 				<td><label>用户名：</label></td>
-				<td><input id="user1" type="text" name="username"/></td>
+				<td><input autocomplete="off" id="user1" type="text" name="username"/></td>
 			</tr>
 			<tr style="height:30px;">
 				<td></td>
@@ -24,7 +24,7 @@
 			</tr>
 			<tr>
 				<td colspan="2">
-					<input class="login_btn" type="submit" value="登陆"/>
+					<input class="login_btn" type="submit" value="登录"/>
 					<button class="reg_btn">注册</button>
 				</td>
 			</tr>
@@ -50,7 +50,7 @@
 				<td colspan="2"></td>
 			</tr>
 			<tr>
-				<td colspan="2"><input class="gl_btn" type="submit" value="登陆"/></td>
+				<td colspan="2"><input class="gl_btn" type="submit" value="登录"/></td>
 			</tr>
 		</table>
 	</form>

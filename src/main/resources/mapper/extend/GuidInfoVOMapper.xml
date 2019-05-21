@@ -12,4 +12,27 @@
 		keyProperty="id">
 		insert into guid_info (title, author,content,type_id) values(#{title},#{author},#{content},#{typeId})
 	</insert>
+	<select id="selectByRandom" resultMap="guidInfoMap">
+		select * from guid_info order by rand() limit 18
+	</select>
+	<select id="selectSixByType" resultMap="guidInfoMap">
+		select * from guid_info as
+		a
+		WHERE 6 > (
+		select count(*)
+		from guid_info
+		where type_id = a.type_id
+		and id > a.id)
+		order by a.id desc;
+	</select>
+	<resultMap type="com.heaven.bean.extend.GuidInfoVO" id="guidInfoMap">
+		<id column="id" property="id" />
+		<result column="title" property="title" />
+		<result column="author" property="author" />
+		<result column="content" property="content" />
+		<result column="date" property="date" />
+		<association property="guidType" column="type_id"
+			select="com.heaven.dao.GuidTypeMapper.selectByPrimaryKey">
+		</association>
+	</resultMap>
 </mapper>

@@ -30,7 +30,7 @@
 			</div>
 		</div>
 		<ul class="breadcrumb">
-			<li><a href="/EmpGuid/recruit/index">主页</a></li>
+			<li><a href="/EmpGuid/loginInterceptor/showNotes">学习平台</a></li>
 			<li class="active">技术文章</li>
 		</ul>
 	</div>

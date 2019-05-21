@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.heaven.bean.GuidInfo;
 import com.heaven.bean.GuidInfoExample;
+import com.heaven.bean.extend.GuidInfoVO;
 import com.heaven.dao.GuidInfoMapper;
 import com.heaven.dao.extend.GuidInfoVOMapper;
 import com.heaven.service.IGuidInfoService;
@@ -47,6 +48,16 @@ public class GuidInfoServiceImpl implements IGuidInfoService {
 	@Override
 	public void save(GuidInfo guidInfo) {
 		guidInfoVOMapper.save(guidInfo);
+	}
+
+	@Override
+	public List<GuidInfoVO> selectByRandom() {
+		return guidInfoVOMapper.selectByRandom();
+	}
+
+	@Override
+	public List<GuidInfoVO> selectSixByType() {
+		return guidInfoVOMapper.selectSixByType();
 	}
 
 }

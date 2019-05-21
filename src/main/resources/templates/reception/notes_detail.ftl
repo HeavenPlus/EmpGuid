@@ -44,7 +44,7 @@
 			</div>
 		</div>
 		<ul class="breadcrumb">
-			<li><a href="/EmpGuid/recruit/index">主页</a></li>
+			<li><a href="/EmpGuid/loginInterceptor/showNotes">学习平台</a></li>
 			<li><a href="/EmpGuid/study/selectAllNotes">技术文章</a></li>
 			<li class="active">技术文章详情</li>
 		</ul>
@@ -55,7 +55,7 @@
 				<tbody>
 					<tr>
 						<td colspan="3" style="text-align:center;font-size:18px;line-height:30px;">${notes.title}</td>
-						<td style="text-align:right;font-size:12px;line-height:30px;">作者：${notes.author}</td>
+						<td style="text-align:right;font-size:12px;line-height:30px;">来源：${notes.author}</td>
 						<td style="text-align:right;font-size:12px;line-height:30px;">日期：${notes.date?string('yyyy-MM-dd')}</td>
 					</tr>
 				</tbody>

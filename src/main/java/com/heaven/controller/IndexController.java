@@ -28,7 +28,6 @@ public class IndexController {
 		List<General> generalList = generalService.findAll();
 		map.put("announcementList", announcementList);
 		map.put("generalList", generalList);
-		map.put("username", null);
 		return new ModelAndView("reception/index", map);
 	}
 }

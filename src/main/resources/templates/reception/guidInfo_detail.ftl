@@ -44,7 +44,7 @@
 			</div>
 		</div>
 		<ul class="breadcrumb">
-			<li><a href="/EmpGuid/recruit/index">主页</a></li>
+			<li><a href="/EmpGuid/loginInterceptor/showGuidInfo">就业指导</a></li>
 			<li><a href="/EmpGuid/guidInfo/guidInfo?typeId=${guidInfo.typeId}&guidName=${guidName}">${guidName}</a></li>
 			<li class="active">${guidName}详情</li>
 		</ul>
@@ -55,7 +55,7 @@
 				<tbody>
 					<tr>
 						<td colspan="3" style="text-align:center;font-size:18px;line-height:30px;">${guidInfo.title}</td>
-						<td style="text-align:right;font-size:12px;line-height:30px;">作者：${guidInfo.author}</td>
+						<td style="text-align:right;font-size:12px;line-height:30px;">来源：${guidInfo.author}</td>
 						<td style="text-align:right;font-size:12px;line-height:30px;">日期：${guidInfo.date?string('yyyy-MM-dd')}</td>
 					</tr>
 				</tbody>

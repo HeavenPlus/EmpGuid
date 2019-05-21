@@ -7,173 +7,32 @@
 		<li>数据库/MySQL/Oracle</li>
 	</ul>
 </div>
-<div class="tab">
-	<div style="width:940px;height:200px;margin:0;">
-		<h5 style="color:red;padding:10px;">移动开发</h5><hr>
-		<ul class="tec_category">
-			<li>微服务</li>
-			<li>区块链</li>
-			<li>人工智能</li>
-		</ul>
-	</div>
-	<div style="width:940px;height:200px;background-color:#dfdfdf;">
-		<div class="col-md-12 column" style="margin:40px auto;">
-			<div class="col-md-6 column">
-				<div class="media">
-					 <a href="#" class="pull-left"><img src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/64/64/default.jpg" class="media-object" alt='' /></a>
-					<div class="media-body">
-						<h4 class="media-heading">
-							Nested media heading
-						</h4> Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
-					</div>
-				</div>
-			</div>
-			<div class="col-md-6 column">
-				<div class="media">
-					 <a href="#" class="pull-left"><img src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/64/64/default.jpg" class="media-object" alt='' /></a>
-					<div class="media-body">
-						<h4 class="media-heading">
-							Nested media heading
-						</h4> Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
-					</div>
-				</div>
+<#list tecTypeVORandom2List as tecRandom2List>
+	<div class="tab">
+		<div style="width:940px;height:200px;margin:0;">
+			<h5 style="color:red;padding:10px;">${tecRandom2List.typeName}</h5><hr>
+			<ul class="tec_category">
+				<#list tecRandom2List.videoTypeVOs as videoTypeList>
+					<li style="cursor:pointer;">${videoTypeList.typeName}</li>
+				</#list>
+			</ul>
+		</div>
+		<div style="width:940px;height:200px;background-color:#dfdfdf;">
+			<div class="col-md-12 column" style="margin:40px auto;">
+				<#list tecRandom2List.videoTypeVOs as videoTypeRandom2>
+					<#list videoTypeRandom2.videoVOs as videoRandom2>
+						<div class="col-md-6 column">
+							<div class="media">
+								 <a href="#" class="pull-left"><img width="90" height="90" src="/EmpGuid/upload/${videoRandom2.image}" class="media-object" alt='' /></a>
+								<div class="media-body">
+									<h5 class="media-heading"><strong>${videoRandom2.title}</strong></h5>
+									<h6 style="text-indent:2em;line-height:18px;">${videoRandom2.description}</h6>
+								</div>
+							</div>
+						</div>
+					</#list>
+				</#list>	
 			</div>
 		</div>
 	</div>
-</div>
-<div class="tab">
-	<div style="width:940px;height:200px;margin:0;">
-		<h5 style="color:red;padding:10px;">移动开发</h5><hr>
-		<ul class="tec_category">
-			<li>微服务</li>
-			<li>区块链</li>
-			<li>人工智能</li>
-		</ul>
-	</div>
-	<div style="width:940px;height:200px;background-color:#dfdfdf;">
-		<div class="col-md-12 column" style="margin:40px auto;">
-			<div class="col-md-6 column">
-				<div class="media">
-					 <a href="#" class="pull-left"><img src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/64/64/default.jpg" class="media-object" alt='' /></a>
-					<div class="media-body">
-						<h4 class="media-heading">
-							Nested media heading
-						</h4> Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
-					</div>
-				</div>
-			</div>
-			<div class="col-md-6 column">
-				<div class="media">
-					 <a href="#" class="pull-left"><img src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/64/64/default.jpg" class="media-object" alt='' /></a>
-					<div class="media-body">
-						<h4 class="media-heading">
-							Nested media heading
-						</h4> Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-<div class="tab">
-	<div style="width:940px;height:200px;margin:0;">
-		<h5 style="color:red;padding:10px;">移动开发</h5><hr>
-		<ul class="tec_category">
-			<li>微服务</li>
-			<li>区块链</li>
-			<li>人工智能</li>
-		</ul>
-	</div>
-	<div style="width:940px;height:200px;background-color:#dfdfdf;">
-		<div class="col-md-12 column" style="margin:40px auto;">
-			<div class="col-md-6 column">
-				<div class="media">
-					 <a href="#" class="pull-left"><img src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/64/64/default.jpg" class="media-object" alt='' /></a>
-					<div class="media-body">
-						<h4 class="media-heading">
-							Nested media heading
-						</h4> Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
-					</div>
-				</div>
-			</div>
-			<div class="col-md-6 column">
-				<div class="media">
-					 <a href="#" class="pull-left"><img src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/64/64/default.jpg" class="media-object" alt='' /></a>
-					<div class="media-body">
-						<h4 class="media-heading">
-							Nested media heading
-						</h4> Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-<div class="tab">
-	<div style="width:940px;height:200px;margin:0;">
-		<h5 style="color:red;padding:10px;">移动开发</h5><hr>
-		<ul class="tec_category">
-			<li>微服务</li>
-			<li>区块链</li>
-			<li>人工智能</li>
-		</ul>
-	</div>
-	<div style="width:940px;height:200px;background-color:#dfdfdf;">
-		<div class="col-md-12 column" style="margin:40px auto;">
-			<div class="col-md-6 column">
-				<div class="media">
-					 <a href="#" class="pull-left"><img src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/64/64/default.jpg" class="media-object" alt='' /></a>
-					<div class="media-body">
-						<h4 class="media-heading">
-							Nested media heading
-						</h4> Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
-					</div>
-				</div>
-			</div>
-			<div class="col-md-6 column">
-				<div class="media">
-					 <a href="#" class="pull-left"><img src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/64/64/default.jpg" class="media-object" alt='' /></a>
-					<div class="media-body">
-						<h4 class="media-heading">
-							Nested media heading
-						</h4> Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-<div class="tab">
-	<div style="width:940px;height:200px;margin:0;">
-		<h5 style="color:red;padding:10px;">移动开发</h5><hr>
-		<ul class="tec_category">
-			<li>微服务</li>
-			<li>区块链</li>
-			<li>人工智能</li>
-		</ul>
-	</div>
-	<div style="width:940px;height:200px;background-color:#dfdfdf;">
-		<div class="col-md-12 column" style="margin:40px auto;">
-			<div class="col-md-6 column">
-				<div class="media">
-					 <a href="#" class="pull-left"><img src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/64/64/default.jpg" class="media-object" alt='' /></a>
-					<div class="media-body">
-						<h4 class="media-heading">
-							Nested media heading
-						</h4> Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
-					</div>
-				</div>
-			</div>
-			<div class="col-md-6 column">
-				<div class="media">
-					 <a href="#" class="pull-left"><img src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/64/64/default.jpg" class="media-object" alt='' /></a>
-					<div class="media-body">
-						<h4 class="media-heading">
-							Nested media heading
-						</h4> Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
+</#list>

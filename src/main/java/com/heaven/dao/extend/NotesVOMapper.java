@@ -1,5 +1,7 @@
 package com.heaven.dao.extend;
 
+import java.util.List;
+
 import com.heaven.bean.Notes;
 
 public interface NotesVOMapper {
@@ -13,4 +15,9 @@ public interface NotesVOMapper {
 	 * @param notes
 	 */
 	void save(Notes notes);
+	/**
+	 * 随机查询
+	 * @return
+	 */
+	List<Notes> selectByRandom();
 }

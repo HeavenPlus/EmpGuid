@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.heaven.dao.extend.TecTypeVOMapper">
+	<select id="selectAll" resultMap="videoTypeMap">
+		select * from tec_type
+	</select>
+	<select id="selectRandom2" resultMap="videoTypeMap2">
+		select * from tec_type
+	</select>
+	<select id="selectRandom3" resultMap="videoTypeMap3">
+		select * from tec_type
+	</select>
+	<!-- 定义结果集 -->
+	<resultMap type="com.heaven.bean.extend.TecTypeVO" id="videoTypeMap">
+		<id column="id" property="id" />
+		<result column="type_name" property="typeName" />
+		<collection column="id" property="videoTypeVOs" javaType="ArrayList"
+			select="com.heaven.dao.extend.VideoTypeVOMapper.selectByTecTypeId">
+		</collection>
+	</resultMap>
+	<resultMap type="com.heaven.bean.extend.TecTypeVO" id="videoTypeMap2">
+		<id column="id" property="id" />
+		<result column="type_name" property="typeName" />
+		<collection column="id" property="videoTypeVOs" javaType="ArrayList"
+			select="com.heaven.dao.extend.VideoTypeVOMapper.selectRandom2">
+		</collection>
+	</resultMap>
+	<resultMap type="com.heaven.bean.extend.TecTypeVO" id="videoTypeMap3">
+		<id column="id" property="id" />
+		<result column="type_name" property="typeName" />
+		<collection column="id" property="videoTypeVOs" javaType="ArrayList"
+			select="com.heaven.dao.extend.VideoTypeVOMapper.selectRandom3">
+		</collection>
+	</resultMap>
+	<select id="selectById" parameterType="int" resultType="com.heaven.bean.extend.TecTypeVO">
+		select * from tec_type where id = #{id}
+	</select>
+</mapper>

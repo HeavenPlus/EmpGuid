@@ -30,7 +30,7 @@
 			</div>
 		</div>
 		<ul class="breadcrumb">
-			<li><a href="/EmpGuid/recruit/index">主页</a></li>
+			<li><a href="/EmpGuid/loginInterceptor/showGuidInfo">就业指导</a></li>
 			<li class="active">${guidName}</li>
 		</ul>
 	</div>

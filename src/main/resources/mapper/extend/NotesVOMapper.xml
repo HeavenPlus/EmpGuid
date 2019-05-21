@@ -8,4 +8,7 @@
 		keyProperty="id">
 		insert into notes (title, author,content) values(#{title},#{author},#{content})
 	</insert>
+	<select id="selectByRandom" resultType="com.heaven.bean.Notes">
+		select * from notes order by rand() limit 10
+	</select>
 </mapper>

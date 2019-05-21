@@ -74,4 +74,9 @@ public class LoginController {
 		response.setCharacterEncoding("UTF-8");
 		response.getWriter().write(result);
 	}
+	@GetMapping("/logout")
+	public ModelAndView logout(HttpServletResponse response){
+		CookieUtil.setCookie(response, "username", null, 0);
+		return new ModelAndView("reception/index");
+	}
 }
