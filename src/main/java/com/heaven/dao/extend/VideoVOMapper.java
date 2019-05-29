@@ -2,6 +2,9 @@ package com.heaven.dao.extend;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
+import com.heaven.bean.Video;
 import com.heaven.bean.extend.VideoVO;
 
 public interface VideoVOMapper {
@@ -32,4 +35,15 @@ public interface VideoVOMapper {
 	 * @return
 	 */
 	List<VideoVO> selectRandom3();
+	/**
+	 * 插入
+	 * @param video
+	 */
+	void insert(Video video);
+	/**
+	 * 根据关键字查询
+	 * @param keyWord
+	 * @return
+	 */
+	List<VideoVO> searchByKeyWord(@Param("keyWord")String keyWord);
 }

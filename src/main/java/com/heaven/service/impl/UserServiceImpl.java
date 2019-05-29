@@ -25,5 +25,9 @@ public class UserServiceImpl implements IUserService {
 	public void save(User user) {
 		userMapper.insert(user);
 	}
+	@Override
+	public void update(User user) {
+		userMapper.updateByPrimaryKey(user);
+	}
 
 }

@@ -33,4 +33,16 @@
 		keyProperty="id">
 		insert into announcement (name, author,content,recruid_id) values(#{name},#{author},#{content}, #{recruidId})
 	</insert>
+	<select id="searchByKeyWord" parameterType="string" resultMap="announcementVOMap">
+		select * from announcement where name like '%${keyWord}%' or content like '%${keyWord}%'
+	</select>
+	<resultMap type="com.heaven.bean.extend.AnnouncementVO" id="announcementVOMap">
+		<id column="id" property="id" />
+		<result column="name" property="name" />
+		<result column="author" property="author" />
+		<result column="content" property="content" />
+		<result column="date" property="date" />
+		<association property="recruit" column="recruid_id" select="com.heaven.dao.RecruitMapper.selectByPrimaryKey">
+		</association>
+	</resultMap>
 </mapper>

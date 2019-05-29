@@ -99,4 +99,10 @@ public class VideoType {
     public void setTecTypeId(Integer tecTypeId) {
         this.tecTypeId = tecTypeId;
     }
+
+	@Override
+	public String toString() {
+		return "VideoType [id=" + id + ", typeName=" + typeName + ", tecTypeId=" + tecTypeId + "]";
+	}
+    
 }

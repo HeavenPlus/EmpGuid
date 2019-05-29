@@ -40,5 +40,9 @@ public class GeneralServiceImpl implements IGeneralService {
 	public void save(General general) {
 		generalVOMapper.save(general);
 	}
+	@Override
+	public List<General> searchByKeyWord(String keyWord) {
+		return generalVOMapper.searchByKeyWord(keyWord);
+	}
 
 }

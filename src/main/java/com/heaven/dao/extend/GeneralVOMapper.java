@@ -1,5 +1,9 @@
 package com.heaven.dao.extend;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
 import com.heaven.bean.General;
 
 public interface GeneralVOMapper {
@@ -13,4 +17,10 @@ public interface GeneralVOMapper {
 	 * @param general
 	 */
 	void save(General general);
+	/**
+	 * 根据关键字查询
+	 * @param keyWord
+	 * @return
+	 */
+	List<General> searchByKeyWord(@Param("keyWord")String keyWord);
 }

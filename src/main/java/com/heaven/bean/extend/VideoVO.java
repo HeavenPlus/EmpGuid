@@ -8,6 +8,7 @@ public class VideoVO {
 	private String description;
 	private String path;
 	private String image;
+	private String time;
 	private VideoTypeVO videoTypeVO;
 	private List<VideoCommentVO> videoCommentVOs;
 
@@ -67,11 +68,22 @@ public class VideoVO {
 		this.videoCommentVOs = videoCommentVOs;
 	}
 
+	public String getTime() {
+		return time;
+	}
+
+	public void setTime(String time) {
+		this.time = time;
+	}
+
 	@Override
 	public String toString() {
 		return "VideoVO [id=" + id + ", title=" + title + ", description=" + description + ", path=" + path + ", image="
-				+ image + ", videoTypeVO=" + videoTypeVO + ", videoCommentVOs=" + videoCommentVOs + "]";
+				+ image + ", time=" + time + ", videoTypeVO=" + videoTypeVO + ", videoCommentVOs=" + videoCommentVOs
+				+ "]";
 	}
+
+	
 
 
 

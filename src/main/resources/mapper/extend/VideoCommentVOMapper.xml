@@ -13,8 +13,16 @@
 		<association property="videoVO" column="video_id" javaType="com.heaven.bean.extend.VideoVO" 
 			select="com.heaven.dao.extend.VideoVOMapper.selectById">
 		</association>
+		<association property="userVO" column="user_id" javaType="com.heaven.bean.extend.UserVO" 
+			select="com.heaven.dao.extend.UserVOMapper.selectById">
+		</association>
 	</resultMap>
 	<select id="selectByVideoId" parameterType="int" resultMap="videoCommentVOMap">
 		select * from video_comment where video_id = #{videoId} 
 	</select>
+	<insert id="insert" parameterType="com.heaven.bean.VideoComment" useGeneratedKeys="true"
+		keyProperty="id">
+		insert into video_comment (content, username,video_id,user_id) values(#{content},#{username},#{videoId}, #{userId})
+	</insert>
+	
 </mapper>

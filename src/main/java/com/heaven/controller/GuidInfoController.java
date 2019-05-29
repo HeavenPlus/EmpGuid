@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.heaven.bean.GuidInfo;
+import com.heaven.bean.extend.GuidInfoVO;
 import com.heaven.service.IGuidInfoService;
 
 @RestController
@@ -46,5 +47,12 @@ public class GuidInfoController {
 		map.put("guidInfo", guidInfo);
 		map.put("guidName", guidName);
 		return new ModelAndView("reception/guidInfo_detail", map);
+	}
+	@GetMapping("/guidSearch")
+	public ModelAndView guidSearch(@RequestParam(value = "keyWord", defaultValue = "") String keyWord,
+			Map<String, Object> map){
+		List<GuidInfoVO> guidInfoVOList = guidInfoService.searchByKeyWord(keyWord);
+		map.put("guidInfoVOList", guidInfoVOList);
+		return new ModelAndView("reception/guidSearch",map);
 	}
 }

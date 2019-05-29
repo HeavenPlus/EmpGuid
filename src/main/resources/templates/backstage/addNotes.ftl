@@ -10,9 +10,9 @@
 					 <label>来源</label><input id="author" name="author" type="text" class="form-control"/>
 				</div>
 				<div class="form-group">
-					 <label>内容</label><textarea id="content" name="content" class="form-control" style="height:300px;resize:none;"></textarea>
+					 <label>内容</label><textarea id="content" name="content" class="form-control" style="resize:none;height:300px;resize:none;"></textarea>
 				</div>
-				<div type="submit" id="save" class="btn btn-default">提交</div><br><br>
+				<div type="submit" id="save" class="btn btn-default btn-success">提交</div><br><br>
 				<script type="text/javascript">
 					$(function(){
 						$("#save").click(function(){
@@ -27,6 +27,12 @@
 								return;
 							}else if($.trim(vContent.value)==""){
 								$.messager.alert('错误信息','内容不能为空','error');
+								return;
+							}else if($.trim(vTitle.value).length>30){
+								$.messager.alert('提示信息','标题长度不能大于30个字符','info');
+								return;
+							}else if($.trim(vAuthor.value).length>20){
+								$.messager.alert('提示信息','来源长度不能大于20个字符','info');
 								return;
 							}
 							var url = "/EmpGuid/manager/doAddNotes";

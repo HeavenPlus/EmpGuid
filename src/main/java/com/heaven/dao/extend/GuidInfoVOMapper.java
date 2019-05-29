@@ -2,6 +2,8 @@ package com.heaven.dao.extend;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.heaven.bean.GuidInfo;
 import com.heaven.bean.extend.GuidInfoVO;
 
@@ -32,4 +34,10 @@ public interface GuidInfoVOMapper {
 	 * @return
 	 */
 	List<GuidInfoVO> selectSixByType();
+	/**
+	 * 根据关键字查询
+	 * @param kewWord
+	 * @return
+	 */
+	List<GuidInfoVO> searchByKeyWord(@Param("keyWord") String keyWord);
 }

@@ -3,6 +3,7 @@ package com.heaven.service;
 import java.util.List;
 
 import com.heaven.bean.Announcement;
+import com.heaven.bean.extend.AnnouncementVO;
 
 public interface IAnnouncementService {
 	/**
@@ -44,4 +45,10 @@ public interface IAnnouncementService {
 	 * @param anno
 	 */
 	void insert(Announcement anno);
+	/**
+	 * 根据关键字查询
+	 * @param kewWord
+	 * @return
+	 */
+	List<AnnouncementVO> searchByKeyWord(String keyWord);
 }

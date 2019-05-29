@@ -165,13 +165,13 @@
 				}
 				var url = "/EmpGuid/checkRegist";
 				var args = {
-							"username":oUser_val,
-							"password":oPass_val,
-							"gender":oGenderT_val,
-							"email":oEmailT_val,
-							"typeId":oTypeIdT_val,
-							"time":new Date()
-							};
+					"username":oUser_val,
+					"password":oPass_val,
+					"gender":oGenderT_val,
+					"email":oEmailT_val,
+					"typeId":oTypeIdT_val,
+					"time":new Date()
+				};
 				$.post(url,args,function(data){
 			   		var str = data.substr(1,5);
 					if($.trim(str)=="font"){

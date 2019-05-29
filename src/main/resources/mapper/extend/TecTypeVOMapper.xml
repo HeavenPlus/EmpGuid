@@ -32,7 +32,7 @@
 			select="com.heaven.dao.extend.VideoTypeVOMapper.selectRandom3">
 		</collection>
 	</resultMap>
-	<select id="selectById" parameterType="int" resultType="com.heaven.bean.extend.TecTypeVO">
+	<select id="selectById" parameterType="int" resultMap="videoTypeMap">
 		select * from tec_type where id = #{id}
 	</select>
 </mapper>

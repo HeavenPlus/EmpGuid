@@ -48,4 +48,9 @@ public class NotesServiceImpl implements INotesService{
 		return notesVOMapper.selectByRandom();
 	}
 
+	@Override
+	public List<Notes> searchByKeyWord(String keyWord) {
+		return notesVOMapper.searchByKeyWord(keyWord);
+	}
+
 }

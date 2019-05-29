@@ -23,11 +23,14 @@
 		}
 		ul li{
 			height:30px;
-			width:143px;
+			width:148px;
 			border-bottom:1px solid #dedede;
 			text-align:center;
 			line-height:30px;
 			cursor:pointer;
+		}
+		ul li:hover{
+			background-color:#dfdfdf;
 		}
 		.guid_title .panel-title{
 			font-size:20px;
@@ -43,15 +46,23 @@
 			line-height: 16px;
 			text-align: center;
 		}
+		.wel .panel-title{
+			height:40px;
+			font-size:24px;
+			line-height:40px;
+		}
 	</style>
 </head>
 <body>
     <div class="easyui-layout" style="width:100%;height:100%;">
-        <div data-options="region:'north'" style="height:70px;text-align:center;" >
-			<span style="font-size:30px;line-height:68px;">大&nbsp;&nbsp; 学&nbsp;&nbsp; 生 &nbsp;&nbsp; 就 &nbsp;&nbsp; 业 &nbsp;&nbsp; 指&nbsp; &nbsp; 导 &nbsp; &nbsp; 及 &nbsp; &nbsp; 教 &nbsp; &nbsp; 育&nbsp; &nbsp;  平 &nbsp; &nbsp; 台</span>
+        <div data-options="region:'north'" style="height:66px;text-align:center;border:2px solid #E7F0FF;background-color:#FAFAFA" >
+			<span style="font-size:30px;line-height:60px;">大&nbsp;&nbsp; 学&nbsp;&nbsp; 生 &nbsp;&nbsp; 就 &nbsp;&nbsp; 业 &nbsp;&nbsp; 指&nbsp; &nbsp; 导 &nbsp; &nbsp; 及 &nbsp; &nbsp; 教 &nbsp; &nbsp; 育&nbsp; &nbsp;  平 &nbsp; &nbsp; 台</span>
+			<div style="line-height:30px;width:200px;height:30px;position:absolute;top:20px;right:15px;text-align:center;">
+				管理员：${guser}
+			</div>
 		</div>
-        <div data-options="region:'south',split:true" style="height:50px;background-color:rgb(51,51,51);text-align:center;color:#fff;line-height:40px;">@郑州轻工业大学 软件学院 软件工程（软件开发15-01）</div>
-        <div data-options="region:'west',split:true,headerCls:'guid_title'" title="导航菜单" style="width:150px;">
+        <div data-options="region:'south',split:false" style="height:50px;background-color:rgb(51,51,51);text-align:center;color:#fff;line-height:40px;">@郑州轻工业大学 软件学院 软件工程（软件开发15-01）</div>
+        <div data-options="region:'west',split:false,headerCls:'guid_title'" title="导航菜单" style="width:150px;">
             <div class="easyui-accordion" data-options="fit:true,border:false">
                 <div title="招聘信息" data-options="selected:true" style="padding:0;">
                     <ul style="font-size:12px;">
@@ -72,18 +83,24 @@
 						<li onclick="openURL('添加信息', '/EmpGuid/manager/addNotes')">添加信息</li>
 					</ul>
                 </div>
-				<div title="技术视频" style="padding:0">
+				<div title="热门视频" style="padding:0">
                     <ul style="font-size:12px;">
-						<li>增</li>
-						<li>删</li>
-						<li>改</li>
-						<li>查</li>
+						<li onclick="openURL('视频列表', '/EmpGuid/manager/showVideoList')">视频列表</li>
+						<li onclick="openURL('类别管理', '/EmpGuid/manager/showCategory')">类别管理</li>
+						<li onclick="openURL('评论管理', '/EmpGuid/manager/showComment')">评论管理</li>
+						<li onclick="openURL('上传视频', '/EmpGuid/manager/addVideo')">视频上传</li>
+					</ul>
+                </div>
+				<div title="系统管理" style="padding:0">
+                    <ul style="font-size:12px;">
+						<a href="/EmpGuid/manager/logout" style="color:#000;cursor:pointer;"><li>注销</li></a>
+						<li>轮播图管理</li>
+						<li onclick="openURL('修改个人信息', '/EmpGuid/manager/showPersonInfo?username=${guser}')">修改个人信息</li>
 					</ul>
                 </div>
             </div>
         </div>
-        <div id="pageContent" data-options="region:'center',title:'欢迎'">
-            
+        <div id="pageContent" data-options="region:'center',title:'欢&nbsp;迎',headerCls:'wel'" >
         </div>
     </div>
 	<script type="text/javascript">

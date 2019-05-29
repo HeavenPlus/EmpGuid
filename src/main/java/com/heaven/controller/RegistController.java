@@ -18,30 +18,34 @@ import com.heaven.service.impl.UserServiceImpl;
 @RestController
 public class RegistController {
 	private User user;
-	
+
 	public User getUser() {
 		return user;
 	}
+
 	public void setUser(User user) {
 		this.user = user;
 	}
+
 	@Autowired
 	private UserServiceImpl userService;
+
 	@GetMapping("/regist")
-	public ModelAndView regist(){
+	public ModelAndView regist() {
 		return new ModelAndView("reception/regist");
 	}
+
 	@PostMapping("/checkRegist")
-	public void checkRegist(HttpServletRequest request,HttpServletResponse response) throws IOException{
+	public void checkRegist(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String result = "";
 		String username = request.getParameter("username");
 		UserVO userVO = userService.login(username);
-		if(userVO!=null){
+		if (userVO != null) {
 			result = "<font color='red'>用户名已被占用</font>";
 			response.setContentType("text/html");
 			response.setCharacterEncoding("UTF-8");
 			response.getWriter().write(result);
-			return; 
+			return;
 		}
 		String password = request.getParameter("password");
 		String gender = request.getParameter("gender");
@@ -52,7 +56,7 @@ public class RegistController {
 		user.setPassword(password);
 		user.setGender(gender);
 		user.setEmail(email);
-		
+
 		user.setTypeId(Integer.parseInt(typeId));
 		setUser(user);
 		result = "ok";
@@ -60,8 +64,9 @@ public class RegistController {
 		response.setCharacterEncoding("UTF-8");
 		response.getWriter().write(result);
 	}
+
 	@GetMapping("/doRegist")
-	public ModelAndView doRegist(){
+	public ModelAndView doRegist() {
 		User us = getUser();
 		userService.save(us);
 		return new ModelAndView("reception/index");

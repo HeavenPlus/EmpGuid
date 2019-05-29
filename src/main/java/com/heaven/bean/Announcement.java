@@ -200,4 +200,11 @@ public class Announcement {
     public void setContent(String content) {
         this.content = content == null ? null : content.trim();
     }
+
+	@Override
+	public String toString() {
+		return "Announcement [id=" + id + ", name=" + name + ", author=" + author + ", date=" + date + ", recruidId="
+				+ recruidId + ", content=" + content + "]";
+	}
+    
 }

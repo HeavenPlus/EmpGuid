@@ -20,7 +20,8 @@ public class LonginInterceptor {
 	@Pointcut("execution(* com.heaven.controller.*.*(..))"
 			+ "&& !execution(* com.heaven.controller.LoginController.*(..))"
 			+ "&& !execution(* com.heaven.controller.IndexController.*(..))"
-			+ "&& !execution(* com.heaven.controller.RecruitController.*(..))")
+			+ "&& !execution(* com.heaven.controller.RecruitController.*(..))"
+			+ "&& !execution(* com.heaven.controller.Manager*.*(..))")
 	public void verify() {}
 	
 	@Before("verify()")

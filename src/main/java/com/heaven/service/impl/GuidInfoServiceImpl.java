@@ -60,4 +60,9 @@ public class GuidInfoServiceImpl implements IGuidInfoService {
 		return guidInfoVOMapper.selectSixByType();
 	}
 
+	@Override
+	public List<GuidInfoVO> searchByKeyWord(String keyWord) {
+		return guidInfoVOMapper.searchByKeyWord(keyWord);
+	}
+
 }

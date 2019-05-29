@@ -10,6 +10,7 @@
 		<result column="title" property="title"/>
 		<result column="description" property="description"/>
 		<result column="path" property="path" />
+		<result column="time" property="time" />
 		<result column="image" property="image" />
 		<association property="videoTypeVO" column="video_type_id" javaType="com.heaven.bean.extend.VideoTypeVO" 
 			select="com.heaven.dao.extend.VideoTypeVOMapper.selectById">
@@ -21,7 +22,7 @@
 	<select id="selectByVideoTypeId" parameterType="int" resultMap="videoVOMap">
 		select * from video where video_type_id = #{videoTypeId} 
 	</select>
-	<select id="selectById" parameterType="int" resultType="com.heaven.bean.extend.VideoVO">
+	<select id="selectById" parameterType="int" resultMap="videoVOMap">
 		select * from video where id = #{id}
 	</select>
 	<select id="selectRandom2" parameterType="int" resultMap="videoVOMap">
@@ -29,5 +30,13 @@
 	</select>
 	<select id="selectRandom3" parameterType="int" resultMap="videoVOMap">
 		select * from video where video_type_id = #{videoTypeId} order by rand() limit 2
+	</select>
+	<insert id="insert" parameterType="com.heaven.bean.Video" useGeneratedKeys="true"
+		keyProperty="id">
+		insert into video (title, description,path,time,image,video_type_id) 
+		values(#{title},#{description},#{path}, #{time},#{image},#{videoTypeId})
+	</insert>
+	<select id="searchByKeyWord" parameterType="string" resultMap="videoVOMap">
+		select * from video where title like '%${keyWord}%'
 	</select>
 </mapper>

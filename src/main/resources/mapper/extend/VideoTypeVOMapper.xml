@@ -44,7 +44,17 @@
 	<select id="selectRandom3" parameterType="int" resultMap="videoTypeVOMap3">
 		select * from video_type where tec_type_id = #{tecTypeId} 
 	</select>
-	<select id="selectById" parameterType="int" resultType="com.heaven.bean.extend.VideoTypeVO">
+	<select id="selectById" parameterType="int" resultMap="videoTypeVOMap">
 		select * from video_type where id = #{id}
+	</select>
+	<select id="selectByName" parameterType="java.lang.String" resultType="com.heaven.bean.VideoType">
+		select * from video_type where type_name = #{typeName}
+	</select>
+	<insert id="insert" parameterType="com.heaven.bean.VideoType" useGeneratedKeys="true"
+		keyProperty="id">
+		insert into video_type (type_name, tec_type_id) values(#{typeName},#{tecTypeId})
+	</insert>
+	<select id="searchByKeyWord" parameterType="string" resultMap="videoTypeVOMap">
+		select * from video_type where type_name like '%${keyWord}%'
 	</select>
 </mapper>

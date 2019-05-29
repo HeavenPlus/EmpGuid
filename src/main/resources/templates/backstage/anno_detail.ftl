@@ -25,8 +25,8 @@
 					 </select>
 					
 				</div>
-				<button type="submit" class="btn btn-default" id="edit">修改</button>
-				<div type="submit" class="btn btn-default" onclick="openURL('信息列表', '/EmpGuid/manager/annoList?page=${currentPage}')">返回</div><br><br>
+				<button type="submit" class="btn btn-default btn-success" id="edit">修改</button>
+				<div type="submit" class="btn btn-default btn-success" onclick="openURL('信息列表', '/EmpGuid/manager/annoList?page=${currentPage}')">返回</div><br><br>
 			</div>
 			<script type="text/javascript">
 				$(function(){

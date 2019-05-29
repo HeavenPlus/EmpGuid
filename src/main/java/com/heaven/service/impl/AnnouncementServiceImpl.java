@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.heaven.bean.Announcement;
 import com.heaven.bean.AnnouncementExample;
+import com.heaven.bean.extend.AnnouncementVO;
 import com.heaven.dao.AnnouncementMapper;
 import com.heaven.dao.extend.AnnouncementVOMapper;
 import com.heaven.service.IAnnouncementService;
@@ -45,6 +46,10 @@ public class AnnouncementServiceImpl implements IAnnouncementService {
 	@Override
 	public void insert(Announcement anno) {
 		announcementVOMapper.save(anno);
+	}
+	@Override
+	public List<AnnouncementVO> searchByKeyWord(String keyWord) {
+		return announcementVOMapper.searchByKeyWord(keyWord);
 	}
 	
 	

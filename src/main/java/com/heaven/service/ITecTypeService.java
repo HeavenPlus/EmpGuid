@@ -20,4 +20,10 @@ public interface ITecTypeService {
 	 * @return
 	 */
 	List<TecTypeVO> selectRandom3();
+	/**
+	 * 根据id查询
+	 * @param id
+	 * @return
+	 */
+	TecTypeVO selectById(Integer id);
 }

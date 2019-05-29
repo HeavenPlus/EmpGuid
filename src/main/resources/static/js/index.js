@@ -26,6 +26,13 @@
 			$(".login_switch").click(function(){
 				$(".content").css("display","none");
 				$(".content_gl").css("display","block");		
+				document.getElementById("user1").value="";
+				document.getElementById("pass1").value="";
+				document.getElementById("gl_user").value="";
+				document.getElementById("gl_pass").value="";
+				$("#user1_val").html("");
+				$("#pass1_val").html("");
+				$("#guser_val").html("");
 			})
 			$(".gl_switch").click(function(){
 				$(".content_gl").css("display","none");
@@ -40,8 +47,11 @@
 			$("body").css({"position":"initial","height":"auto"});
 			$("#user1_val").html("");
 			$("#pass1_val").html("");
+			$("#guser_val").html("");
 			document.getElementById("user1").value="";
 			document.getElementById("pass1").value="";
+			document.getElementById("gl_user").value="";
+			document.getElementById("gl_pass").value="";
 		})
 	})
 	$(function(){
@@ -59,6 +69,30 @@
 					$("#user1_val").html(data);
 				}else{
 					window.location.href = '/EmpGuid/doLogin';
+				}
+			});
+		});
+		$(".gl_btn").click(function(){
+			var gUser = document.getElementById("gl_user");
+			var gPass = document.getElementById("gl_pass");
+			gUser_val = $.trim(gUser.value);
+			gPass_val = $.trim(gPass.value);
+			if(gUser_val==""){
+				$("#guser_val").html("<font color='red'>用户名不能为空</font>");
+				return;
+			}else if(gPass_val==""){
+				$("#guser_val").html("<font color='red'>密码不能为空</font>");
+				return;
+			}
+			var url = "/EmpGuid/manager/login";
+			var args = {"username":gUser_val,"password":gPass_val,"time":new Date()};
+			$.post(url,args,function(data){
+			   var str = data.substr(1,5);
+				if($.trim(str)=="font"){
+					$("#guser_val").html(data);
+					return;
+				}else{
+					window.location.href = '/EmpGuid/manager/doLogin';
 				}
 			});
 		});

@@ -25,9 +25,9 @@
 				</ul>
 			</li>
 		</ul>
-		<form class="navbar-form navbar-left" role="search">
+		<form class="navbar-form navbar-left" role="search" action="/EmpGuid/recruit/indexSearch">
 			<div class="form-group">
-				<input type="text" class="form-control" placeholder="请输入企业名称" autofocus/>
+				<input type="text" name="keyWord" class="form-control" placeholder="请输入关键字查询" autofocus/>
 			</div> <button type="submit" class="btn btn-default">搜索</button>
 		</form>
 		<ul class="nav navbar-nav navbar-right">
@@ -35,9 +35,9 @@
 				<li class="dropdown">
 				 	<a href="#" class="dropdown-toggle" data-toggle="dropdown">用户：${username}<strong class="caret"></strong></a>
 					<ul class="dropdown-menu" style="min-width:100%;">
-						<li>
-							 <a href="/EmpGuid/logout">注销</a>
-						</li>
+						<li><a href="/EmpGuid/logout">修改个人信息</a></li>
+						<li class="divider"></li>
+						<li><a href="/EmpGuid/logout">退出登录</a></li>
 					</ul>
 				</li>
 			<#else>

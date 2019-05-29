@@ -26,5 +26,9 @@ public class TecTypeServiceImpl implements ITecTypeService {
 	public List<TecTypeVO> selectRandom3() {
 		return tecTypeVOMapper.selectRandom3();
 	}
+	@Override
+	public TecTypeVO selectById(Integer id) {
+		return tecTypeVOMapper.selectById(id);
+	}
 
 }

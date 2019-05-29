@@ -15,4 +15,7 @@
 			select="com.heaven.dao.UserTypeMapper.selectByPrimaryKey">
 		</association>
 	</resultMap>
+	<select id="selectById" parameterType="int" resultMap="UserVOResultMap">
+		select * from user where id = #{id}
+	</select>
 </mapper>

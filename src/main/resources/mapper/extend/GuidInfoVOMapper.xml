@@ -35,4 +35,7 @@
 			select="com.heaven.dao.GuidTypeMapper.selectByPrimaryKey">
 		</association>
 	</resultMap>
+	<select id="searchByKeyWord" parameterType="string" resultMap="guidInfoMap">
+		select * from guid_info where title like '%${keyWord}%' or content like '%${keyWord}%'
+	</select>
 </mapper>

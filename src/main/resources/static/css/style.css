@@ -21,8 +21,8 @@ body {
 .login_switch {
 	position: absolute;
 	cursor: pointer;
-	left: 398px;
-	top: 7px;
+	left: 332px;
+	top: 15px;
 }
 
 .login_form {
@@ -69,13 +69,13 @@ body {
 .gl_switch {
 	position: absolute;
 	cursor: pointer;
-	left: 398px;
-	top: 7px;
+	left: 318px;
+	top: 15px;
 }
 
 .gl_form {
 	margin-left: 236px;
-	margin-top: 70px;
+	margin-top: 40px;
 	line-height: 20px;
 	font-size: 14px;
 }

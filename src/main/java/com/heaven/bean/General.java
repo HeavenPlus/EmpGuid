@@ -167,4 +167,11 @@ public class General {
     public void setContent(String content) {
         this.content = content == null ? null : content.trim();
     }
+
+	@Override
+	public String toString() {
+		return "General [id=" + id + ", title=" + title + ", author=" + author + ", date=" + date + ", content="
+				+ content + "]";
+	}
+    
 }

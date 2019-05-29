@@ -18,13 +18,13 @@
 				</ol>
 				<div class="carousel-inner">
 					<div class="item active">
-						<img width="100%" alt="" src="/EmpGuid/images/banner1.jpg" />
+						<img style="width:100%;height:300px;" alt="" src="/EmpGuid/images/banner5.jpg" />
 					</div>
 					<div class="item">
-						<img width="100%" alt="" src="/EmpGuid/images/banner2.jpg" />
+						<img style="width:100%;height:300px;" alt="" src="/EmpGuid/images/banner4.jpg" />
 					</div>
 					<div class="item">
-						<img width="100%" alt="" src="/EmpGuid/images/banner3.jpg" />
+						<img style="width:100%;height:300px;" alt="" src="/EmpGuid/images/banner6.jpg" />
 					</div>
 				</div> <a class="left carousel-control" href="#carousel-845940" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control" href="#carousel-845940" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
 			</div>

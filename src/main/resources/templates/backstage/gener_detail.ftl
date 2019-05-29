@@ -14,8 +14,8 @@
 				<div class="form-group">
 					 <label>内容</label><pre id="content" name="content" contenteditable="true" class="form-control" style="height:300px;resize:none;">${general.content}</pre>
 				</div>
-				<button type="submit" class="btn btn-default" id="edit">修改</button>
-				<div type="submit" class="btn btn-default" onclick="openURL('招聘简章', '/EmpGuid/manager/generList?page=${currentPage}')">返回</div><br><br>
+				<button type="submit" class="btn btn-default btn-success" id="edit">修改</button>
+				<div type="submit" class="btn btn-default btn-success" onclick="openURL('招聘简章', '/EmpGuid/manager/generList?page=${currentPage}')">返回</div><br><br>
 			</div>
 			<script type="text/javascript">
 				$(function(){

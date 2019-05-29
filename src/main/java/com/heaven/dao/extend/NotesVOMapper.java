@@ -2,6 +2,8 @@ package com.heaven.dao.extend;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.heaven.bean.Notes;
 
 public interface NotesVOMapper {
@@ -20,4 +22,10 @@ public interface NotesVOMapper {
 	 * @return
 	 */
 	List<Notes> selectByRandom();
+	/**
+	 * 根据关键字查询
+	 * @param keyWord
+	 * @return
+	 */
+	List<Notes> searchByKeyWord(@Param("keyWord")String keyWord);
 }

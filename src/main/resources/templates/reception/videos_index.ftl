@@ -6,7 +6,7 @@
 	<div class="container" style="margin:0 auto;">
 		<div class="row clearfix">
 			<div class="col-md-12 column">
-				<#include "nav.ftl">
+				<#include "videoNav.ftl">
 			</div>
 		</div>
 	</div>
@@ -21,7 +21,7 @@
 					<#list videoTypeList.videoVOs as videoList>
 						<div class="col-md-4">
 							<div class="thumbnail" style="height:360px;width:300px;">
-								<img width="300" src="/EmpGuid/upload/${videoList.image}" />
+								<img style="cursor:pointer;" onclick="location.href='/EmpGuid/study/showVideoDetails?id=${videoList.id}'" width="300" src="/EmpGuid/upload/${videoList.image}" />
 								<div class="caption">
 									<h5><strong>${videoList.title}</strong></h5>
 									<h6 style="text-indent:2em;line-height:18px;">${videoList.description}</h6>
@@ -29,7 +29,7 @@
 							</div>
 						</div>
 					</#list>
-				</#list>>
+				</#list>
 			</div>
 		</div>
 	</#list>

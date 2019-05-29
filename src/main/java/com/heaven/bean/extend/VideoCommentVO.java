@@ -8,6 +8,7 @@ public class VideoCommentVO {
 	private Date date;
 	private String username;
 	private VideoVO videoVO;
+	private UserVO userVO;
 
 	public Integer getId() {
 		return id;
@@ -49,12 +50,18 @@ public class VideoCommentVO {
 		this.videoVO = videoVO;
 	}
 
+	public UserVO getUserVO() {
+		return userVO;
+	}
+
+	public void setUserVO(UserVO userVO) {
+		this.userVO = userVO;
+	}
+
 	@Override
 	public String toString() {
 		return "VideoCommentVO [id=" + id + ", content=" + content + ", date=" + date + ", username=" + username
-				+ ", videoVO=" + videoVO + "]";
+				+ ", videoVO=" + videoVO + ", userVO=" + userVO + "]";
 	}
-
-
 
 }

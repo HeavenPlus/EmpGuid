@@ -16,8 +16,12 @@
 						<tr style="cursor:pointer;">
 							<td>${announcement.name}</td>
 							<td>${announcement.author}</td>
-							<td onclick="openURL('修改信息', '/EmpGuid/manager/annoDetail?id=${announcement.id}&page=${currentPage}')"><a>修改</a></td>
-							<td onclick="openURL('信息列表', '/EmpGuid/manager/deleteAnno?id=${announcement.id}&page=${currentPage}')"><a>删除</a></td>
+							<td onclick="openURL('修改信息', '/EmpGuid/manager/annoDetail?id=${announcement.id}&page=${currentPage}')">
+								<button type="button" class="btn btn-default btn-success">修改</button>
+							</td>
+							<td>
+								<button type="button" class="btn btn-default btn-danger"  id="${announcement.id}" name="${currentPage}" onclick="confirm.call(this);">删除</button>
+							</td>
 						</tr>
 					</#list>
 				</tbody>
@@ -46,3 +50,16 @@
 		</div>
 	</div>
 </div>
+<script>
+	function confirm(){
+		var oid = $(this).attr("id");
+		var ocp = $(this).attr("name");
+		var url = '/EmpGuid/manager/deleteAnno?id='+oid+'&page='+ocp;
+		$.messager.confirm('提示信息', '确定要删除吗？', function(r){
+			if (r){
+				openURL('信息列表', url)
+				$.messager.alert('提示信息','删除成功！','info');
+			}
+		});
+	}
+</script>

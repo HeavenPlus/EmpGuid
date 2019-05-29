@@ -11,4 +11,14 @@
 	<select id="selectByRandom" resultType="com.heaven.bean.Notes">
 		select * from notes order by rand() limit 10
 	</select>
+	<select id="searchByKeyWord" parameterType="string" resultMap="notesMap">
+		select * from notes where title like '%${keyWord}%' or content like '%${keyWord}%'
+	</select>
+	<resultMap id="notesMap" type="com.heaven.bean.Notes">
+		<id column="id" property="id"/>
+		<result column="title" property="title"/>
+		<result column="author" property="author"/>
+		<result column="content" property="content"/>
+		<result column="date" property="date"/>
+	</resultMap>
 </mapper>

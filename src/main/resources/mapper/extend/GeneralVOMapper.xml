@@ -8,4 +8,14 @@
 		keyProperty="id">
 		insert into general (title, author,content) values(#{title},#{author},#{content})
 	</insert>
+	<select id="searchByKeyWord" parameterType="string" resultMap="generalMap">
+		select * from general where title like '%${keyWord}%' or content like '%${keyWord}%'
+	</select>
+	<resultMap id="generalMap" type="com.heaven.bean.General">
+		<id column="id" property="id"/>
+		<result column="title" property="title"/>
+		<result column="author" property="author"/>
+		<result column="content" property="content"/>
+		<result column="date" property="date"/>
+	</resultMap>
 </mapper>

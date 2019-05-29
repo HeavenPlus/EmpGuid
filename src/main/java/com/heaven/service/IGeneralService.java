@@ -32,4 +32,10 @@ public interface IGeneralService {
 	 * @param eneral
 	 */
 	void save(General general);
+	/**
+	 * 按关键字查询
+	 * @param keyWord
+	 * @return
+	 */
+	List<General> searchByKeyWord(String keyWord);
 }

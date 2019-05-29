@@ -65,18 +65,30 @@ public class LoginController {
 		UserVO user = userService.login(username);
 		if (user == null || user.getUserType().getId() != 1) {
 			result = "<font color='red'>用户不存在</font>";
+			response.setContentType("text/html");
+			response.setCharacterEncoding("UTF-8");
+			response.getWriter().write(result);
+			return;
 		} else if (password.equals(user.getPassword())) {
 			CookieUtil.setCookie(response, "username", username, 7200);
 		} else {
 			result = "<font color='red'>密码不正确</font>";
+			response.setContentType("text/html");
+			response.setCharacterEncoding("UTF-8");
+			response.getWriter().write(result);
+			return;
 		}
 		response.setContentType("text/html");
 		response.setCharacterEncoding("UTF-8");
 		response.getWriter().write(result);
 	}
 	@GetMapping("/logout")
-	public ModelAndView logout(HttpServletResponse response){
+	public ModelAndView logout(HttpServletResponse response,Map<String, Object> map){
 		CookieUtil.setCookie(response, "username", null, 0);
-		return new ModelAndView("reception/index");
+		List<Announcement> announcementList = announcementService.selectEight();
+		List<General> generalList = generalService.findAll();
+		map.put("announcementList", announcementList);
+		map.put("generalList", generalList);
+		return new ModelAndView("reception/index", map);
 	}
 }

@@ -13,17 +13,17 @@
 			<h5 style="color:red;padding:10px;">${tecRandom2List.typeName}</h5><hr>
 			<ul class="tec_category">
 				<#list tecRandom2List.videoTypeVOs as videoTypeList>
-					<li style="cursor:pointer;">${videoTypeList.typeName}</li>
+					<a style="color:#000;" href="/EmpGuid/study/showVideosByType?typeId=${videoTypeList.id}"><li style="cursor:pointer;">${videoTypeList.typeName}</li></a>
 				</#list>
 			</ul>
 		</div>
-		<div style="width:940px;height:200px;background-color:#dfdfdf;">
+		<div style="width:940px;height:200px;background-color:#F0F0F0;">
 			<div class="col-md-12 column" style="margin:40px auto;">
 				<#list tecRandom2List.videoTypeVOs as videoTypeRandom2>
 					<#list videoTypeRandom2.videoVOs as videoRandom2>
 						<div class="col-md-6 column">
 							<div class="media">
-								 <a href="#" class="pull-left"><img width="90" height="90" src="/EmpGuid/upload/${videoRandom2.image}" class="media-object" alt='' /></a>
+								 <a href="/EmpGuid/study/showVideoDetails?id=${videoRandom2.id}" class="pull-left"><img width="90" height="90" src="/EmpGuid/upload/${videoRandom2.image}" class="media-object" alt='' /></a>
 								<div class="media-body">
 									<h5 class="media-heading"><strong>${videoRandom2.title}</strong></h5>
 									<h6 style="text-indent:2em;line-height:18px;">${videoRandom2.description}</h6>

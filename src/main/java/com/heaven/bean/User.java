@@ -198,4 +198,11 @@ public class User {
     public void setTypeId(Integer typeId) {
         this.typeId = typeId;
     }
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", username=" + username + ", password=" + password + ", email=" + email + ", gender="
+				+ gender + ", typeId=" + typeId + "]";
+	}
+    
 }

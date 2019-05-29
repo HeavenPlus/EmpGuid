@@ -1,7 +1,10 @@
 package com.heaven.controller;
 
+import java.io.File;
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.github.pagehelper.PageHelper;
@@ -17,10 +21,24 @@ import com.heaven.bean.Announcement;
 import com.heaven.bean.General;
 import com.heaven.bean.GuidInfo;
 import com.heaven.bean.Notes;
+import com.heaven.bean.User;
+import com.heaven.bean.Video;
+import com.heaven.bean.VideoType;
+import com.heaven.bean.extend.TecTypeVO;
+import com.heaven.bean.extend.UserVO;
+import com.heaven.bean.extend.VideoCommentVO;
+import com.heaven.bean.extend.VideoTypeVO;
+import com.heaven.bean.extend.VideoVO;
 import com.heaven.service.IAnnouncementService;
 import com.heaven.service.IGeneralService;
 import com.heaven.service.IGuidInfoService;
 import com.heaven.service.INotesService;
+import com.heaven.service.ITecTypeService;
+import com.heaven.service.IUserService;
+import com.heaven.service.IVideoCommentService;
+import com.heaven.service.IVideoService;
+import com.heaven.service.IVideoTypeService;
+import com.heaven.utils.FileUploadUtil;
 
 @RestController
 @RequestMapping("/manager")
@@ -33,15 +51,25 @@ public class ManagerController {
 	private INotesService notesService;
 	@Autowired
 	private IGuidInfoService guidInfoService;
-
-	@GetMapping("/index")
-	public ModelAndView index() {
-		return new ModelAndView("backstage/index");
-	}
+	@Autowired
+	private IVideoService videoService;
+	@Autowired
+	private IVideoTypeService videoTypeService;
+	@Autowired
+	private ITecTypeService tecTypeService;
+	@Autowired
+	private IVideoCommentService videoCommentService;
+	@Autowired
+	private IUserService userService;
 
 	@GetMapping("/welcome")
 	public ModelAndView welcome() {
 		return new ModelAndView("backstage/welcome");
+	}
+
+	@GetMapping("/index")
+	public ModelAndView index() {
+		return new ModelAndView("backstage/index");
 	}
 
 	@GetMapping("/annoList")
@@ -125,14 +153,16 @@ public class ManagerController {
 	}
 
 	@GetMapping("/annoDetail")
-	public ModelAndView annoDetail(@RequestParam(defaultValue = "1", value = "page") Integer page, Integer id,Map<String,Object> map){
+	public ModelAndView annoDetail(@RequestParam(defaultValue = "1", value = "page") Integer page, Integer id,
+			Map<String, Object> map) {
 		Announcement announcement = announcementService.findById(id);
 		map.put("announcement", announcement);
 		map.put("currentPage", page);
-		return new ModelAndView("backstage/anno_detail",map);
+		return new ModelAndView("backstage/anno_detail", map);
 	}
+
 	@PostMapping("/editAnno")
-	public void editAnno(@RequestParam Integer id, String title,String author,String content,Integer typeId){
+	public void editAnno(@RequestParam Integer id, String title, String author, String content, Integer typeId) {
 		Announcement anno = new Announcement();
 		anno.setId(id);
 		anno.setName(title);
@@ -141,16 +171,18 @@ public class ManagerController {
 		anno.setRecruidId(typeId);
 		announcementService.update(anno);
 	}
+
 	@GetMapping("/generDetail")
-	public ModelAndView generDetail(@RequestParam(defaultValue = "1", value = "page") Integer page, Integer id,Map<String,Object> map){
+	public ModelAndView generDetail(@RequestParam(defaultValue = "1", value = "page") Integer page, Integer id,
+			Map<String, Object> map) {
 		General general = generalService.findById(id);
 		map.put("general", general);
 		map.put("currentPage", page);
-		return new ModelAndView("backstage/gener_detail",map);
+		return new ModelAndView("backstage/gener_detail", map);
 	}
-	
+
 	@PostMapping("/editGener")
-	public void editGener(@RequestParam Integer id, String title,String author,String content){
+	public void editGener(@RequestParam Integer id, String title, String author, String content) {
 		General general = new General();
 		general.setId(id);
 		general.setTitle(title);
@@ -158,16 +190,18 @@ public class ManagerController {
 		general.setContent(content);
 		generalService.update(general);
 	}
+
 	@GetMapping("/guidInfoDetail")
-	public ModelAndView guidInfoDetail(@RequestParam(defaultValue = "1", value = "page") Integer page, Integer id,Map<String,Object> map){
+	public ModelAndView guidInfoDetail(@RequestParam(defaultValue = "1", value = "page") Integer page, Integer id,
+			Map<String, Object> map) {
 		GuidInfo guidInfo = guidInfoService.selectById(id);
 		map.put("guidInfo", guidInfo);
 		map.put("currentPage", page);
-		return new ModelAndView("backstage/guidInfo_detail",map);
+		return new ModelAndView("backstage/guidInfo_detail", map);
 	}
-	
+
 	@PostMapping("/editGuidInfo")
-	public void editGuidInfo(@RequestParam Integer id, String title,String author,String content,Integer typeId){
+	public void editGuidInfo(@RequestParam Integer id, String title, String author, String content, Integer typeId) {
 		GuidInfo guidInfo = new GuidInfo();
 		guidInfo.setId(id);
 		guidInfo.setTitle(title);
@@ -176,15 +210,18 @@ public class ManagerController {
 		guidInfo.setTypeId(typeId);
 		guidInfoService.update(guidInfo);
 	}
+
 	@GetMapping("/notesDetail")
-	public ModelAndView notesDetail(@RequestParam(defaultValue = "1", value = "page") Integer page, Integer id,Map<String,Object> map){
+	public ModelAndView notesDetail(@RequestParam(defaultValue = "1", value = "page") Integer page, Integer id,
+			Map<String, Object> map) {
 		Notes notes = notesService.selectById(id);
 		map.put("notes", notes);
 		map.put("currentPage", page);
-		return new ModelAndView("backstage/notes_detail",map);
+		return new ModelAndView("backstage/notes_detail", map);
 	}
+
 	@PostMapping("/editNotes")
-	public void editNotes(@RequestParam Integer id, String title,String author,String content){
+	public void editNotes(@RequestParam Integer id, String title, String author, String content) {
 		Notes notes = new Notes();
 		notes.setId(id);
 		notes.setTitle(title);
@@ -192,19 +229,21 @@ public class ManagerController {
 		notes.setContent(content);
 		notesService.update(notes);
 	}
+
 	@GetMapping("/addAnno")
-	public ModelAndView addAnno(){
+	public ModelAndView addAnno() {
 		return new ModelAndView("backstage/addAnno");
 	}
+
 	@PostMapping("/doAddAnno")
-	public void doAddAnno(@RequestParam String title,String author,String content,Integer typeId){
-		if(typeId==6){
+	public void doAddAnno(@RequestParam String title, String author, String content, Integer typeId) {
+		if (typeId == 6) {
 			General general = new General();
 			general.setTitle(title);
 			general.setAuthor(author);
 			general.setContent(content);
 			generalService.save(general);
-		}else{
+		} else {
 			Announcement announcement = new Announcement();
 			announcement.setName(title);
 			announcement.setAuthor(author);
@@ -212,14 +251,16 @@ public class ManagerController {
 			announcement.setRecruidId(typeId);
 			announcementService.insert(announcement);
 		}
-		
+
 	}
+
 	@GetMapping("/addGuidInfo")
-	public ModelAndView addGuidInfo(){
+	public ModelAndView addGuidInfo() {
 		return new ModelAndView("backstage/addGuidInfo");
 	}
+
 	@PostMapping("/doAddGuidInfo")
-	public void doAddGuidInfo(@RequestParam String title,String author,String content,Integer typeId){
+	public void doAddGuidInfo(@RequestParam String title, String author, String content, Integer typeId) {
 		GuidInfo guidInfo = new GuidInfo();
 		guidInfo.setTitle(title);
 		guidInfo.setAuthor(author);
@@ -227,16 +268,202 @@ public class ManagerController {
 		guidInfo.setTypeId(typeId);
 		guidInfoService.save(guidInfo);
 	}
+
 	@GetMapping("/addNotes")
-	public ModelAndView addNotes(){
+	public ModelAndView addNotes() {
 		return new ModelAndView("backstage/addNotes");
 	}
+
 	@PostMapping("/doAddNotes")
-	public void doAddNotes(@RequestParam String title,String author,String content){
+	public void doAddNotes(@RequestParam String title, String author, String content) {
 		Notes notes = new Notes();
 		notes.setTitle(title);
 		notes.setAuthor(author);
 		notes.setContent(content);
 		notesService.save(notes);
+	}
+
+	@GetMapping("/showVideoList")
+	public ModelAndView showVideoList(@RequestParam(defaultValue = "1", value = "page") Integer page,
+			Map<String, Object> map) {
+		PageHelper.startPage(page, 5);
+		List<VideoVO> videoVOList = videoService.selectAll();
+		PageInfo<VideoVO> pageInfo = new PageInfo<>(videoVOList);
+		List<VideoVO> list = pageInfo.getList();
+		map.put("videoVOList", list);
+		map.put("currentPage", page);
+		map.put("totalPage", pageInfo.getPages());
+		return new ModelAndView("backstage/video_list", map);
+	}
+
+	@GetMapping("/videoDetail")
+	public ModelAndView videoDetail(@RequestParam(defaultValue = "1", value = "page") Integer page, Integer id,
+			Map<String, Object> map) {
+		VideoVO videoVO = videoService.selectById(id);
+		List<VideoType> videoTypes = videoTypeService.findAll();
+		map.put("videoVO", videoVO);
+		map.put("videoTypes", videoTypes);
+		map.put("currentPage", page);
+		return new ModelAndView("backstage/video_detail", map);
+	}
+
+	@PostMapping("/editVideoDetail")
+	public void editVideoDetail(Video video, @RequestParam MultipartFile ifile, MultipartFile vfile,
+			HttpServletRequest request) throws Exception {
+		if (ifile.getSize() > 0) {
+			String oldImagePath = video.getImage();
+			String imagePath = FileUploadUtil.upload(oldImagePath, ifile, request);
+			video.setImage(imagePath);
+		}
+		if (vfile.getSize() > 0) {
+			String oldVideoPath = video.getPath();
+			String videoPath = FileUploadUtil.upload(oldVideoPath, vfile, request);
+			video.setPath(videoPath);
+			String realPath = request.getServletContext().getRealPath("/videos");
+			File file = new File(realPath + "/" + videoPath);
+			String videoTime = FileUploadUtil.ReadVideoTime(file);
+			video.setTime(videoTime);
+		}
+		videoService.update(video);
+	}
+
+	@GetMapping("/deleteVideo")
+	public ModelAndView deleteVideo(@RequestParam(defaultValue = "1", value = "page") Integer page, Integer id,
+			Map<String, Object> map, HttpServletRequest request) {
+		VideoVO videoVO = videoService.selectById(id);
+		String imgPath = videoVO.getImage();
+		String videoPath = videoVO.getPath();
+		String realImgPath = request.getServletContext().getRealPath("/upload");
+		String realVideoPath = request.getServletContext().getRealPath("/videos");
+		File imgFile = new File(realImgPath + "/" + imgPath);
+		File videoFile = new File(realVideoPath + "/" + videoPath);
+		if (imgFile.exists()) {
+			imgFile.delete();
+		}
+		if (videoFile.exists()) {
+			videoFile.delete();
+		}
+		videoService.deleteById(id);
+		return showVideoList(page, map);
+	}
+
+	@GetMapping("/addVideo")
+	public ModelAndView addVideo(Map<String, Object> map) {
+		List<VideoType> videoTypeList = videoTypeService.findAll();
+		map.put("videoTypeList", videoTypeList);
+		return new ModelAndView("backstage/addVideo", map);
+	}
+
+	@PostMapping("/doAddVideo")
+	public String doAddVideo(Video video, MultipartFile ifile, MultipartFile vfile, HttpServletRequest request)
+			throws Exception {
+		if (ifile.isEmpty()) {
+			return "请选择要上传的封面";
+		}
+		if (vfile.isEmpty()) {
+			return "请选择要上传的视频";
+		}
+		String oldImagePath = video.getImage();
+		String imagePath = FileUploadUtil.upload(oldImagePath, ifile, request);
+		video.setImage(imagePath);
+		String oldVideoPath = video.getPath();
+		String videoPath = FileUploadUtil.upload(oldVideoPath, vfile, request);
+		video.setPath(videoPath);
+		String realPath = request.getServletContext().getRealPath("/videos");
+		File file = new File(realPath + "/" + videoPath);
+		String videoTime = FileUploadUtil.ReadVideoTime(file);
+		video.setTime(videoTime);
+		videoService.insert(video);
+		return "上传成功";
+	}
+
+	@GetMapping("/showCategory")
+	public ModelAndView showCategory(@RequestParam(defaultValue = "1", value = "page") Integer page,
+			Map<String, Object> map) {
+		PageHelper.startPage(page, 6);
+		List<VideoTypeVO> videoTypeVOs = videoTypeService.selectAll();
+		PageInfo<VideoTypeVO> pageInfo = new PageInfo<>(videoTypeVOs);
+		List<VideoTypeVO> list = pageInfo.getList();
+		map.put("videoTypeVOs", list);
+		map.put("currentPage", page);
+		map.put("totalPage", pageInfo.getPages());
+		return new ModelAndView("backstage/category", map);
+	}
+
+	@GetMapping("/videoTypeDetail")
+	public ModelAndView videoTypeDetail(@RequestParam(defaultValue = "1", value = "page") Integer page, Integer id,
+			Map<String, Object> map) {
+		VideoTypeVO videoTypeVO = videoTypeService.selectById(id);
+		List<TecTypeVO> tecTypeVOs = tecTypeService.selectAll();
+		map.put("tecTypeVOs", tecTypeVOs);
+		map.put("videoTypeVO", videoTypeVO);
+		map.put("currentPage", page);
+		return new ModelAndView("backstage/category_detail", map);
+	}
+
+	@PostMapping("/editVideoType")
+	public void editVideoType(VideoType videoType) {
+		videoTypeService.update(videoType);
+	}
+
+	@GetMapping("/deleteVideoType")
+	public ModelAndView deleteVideoType(@RequestParam(defaultValue = "1", value = "page") Integer page, Integer id,
+			Map<String, Object> map) {
+		videoTypeService.delete(id);
+		return showCategory(page, map);
+	}
+
+	@GetMapping("/addVideoType")
+	public ModelAndView addVideoType(Map<String, Object> map) {
+		List<TecTypeVO> tecTypeVOs = tecTypeService.selectAll();
+		map.put("tecTypeVOs", tecTypeVOs);
+		return new ModelAndView("backstage/addVideoType");
+	}
+
+	@PostMapping("/doAddVideoType")
+	public String doAddVideoType(VideoType videoType) {
+		VideoType type = videoTypeService.selectByName(videoType.getTypeName());
+		if (type != null) {
+			return "分类已存在";
+		}
+		videoTypeService.insert(videoType);
+		return "success";
+	}
+
+	@GetMapping("/showComment")
+	public ModelAndView showComment(@RequestParam(defaultValue = "1", value = "page") Integer page,
+			Map<String, Object> map) {
+		List<VideoCommentVO> VideoCommentVOList = videoCommentService.selectAll();
+		PageHelper.startPage(page, 5);
+		PageInfo<VideoCommentVO> pageInfo = new PageInfo<>(VideoCommentVOList);
+		List<VideoCommentVO> list = pageInfo.getList();
+		map.put("VideoCommentVOList", list);
+		map.put("currentPage", page);
+		map.put("totalPage", pageInfo.getPages());
+		return new ModelAndView("backstage/showComment");
+	}
+
+	@GetMapping("/delComment")
+	public ModelAndView delComment(@RequestParam(defaultValue = "1", value = "page") Integer page, Integer id,
+			Map<String, Object> map) {
+		videoCommentService.deleteById(id);
+		return showComment(page, map);
+	}
+
+	@GetMapping("/showPersonInfo")
+	public ModelAndView showPersonInfo(@RequestParam String username, Map<String, Object> map) {
+		UserVO userVO = userService.login(username);
+		map.put("userVO", userVO);
+		return new ModelAndView("backstage/showPersonInfo", map);
+	}
+
+	@PostMapping("/editInfo")
+	public String editInfo(User user) {
+		UserVO userVO = userService.login(user.getUsername());
+		if (userVO != null && !userVO.getUsername().equals(user.getUsername())) {
+			return "用户名已被占用";
+		}
+		userService.update(user);
+		return "信息修改成功";
 	}
 }
