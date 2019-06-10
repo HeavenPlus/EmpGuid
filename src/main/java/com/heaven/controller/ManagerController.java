@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.heaven.bean.Announcement;
+import com.heaven.bean.Banner;
 import com.heaven.bean.General;
 import com.heaven.bean.GuidInfo;
 import com.heaven.bean.Notes;
@@ -30,6 +31,7 @@ import com.heaven.bean.extend.VideoCommentVO;
 import com.heaven.bean.extend.VideoTypeVO;
 import com.heaven.bean.extend.VideoVO;
 import com.heaven.service.IAnnouncementService;
+import com.heaven.service.IBannerService;
 import com.heaven.service.IGeneralService;
 import com.heaven.service.IGuidInfoService;
 import com.heaven.service.INotesService;
@@ -61,6 +63,8 @@ public class ManagerController {
 	private IVideoCommentService videoCommentService;
 	@Autowired
 	private IUserService userService;
+	@Autowired
+	private IBannerService bannerService;
 
 	@GetMapping("/welcome")
 	public ModelAndView welcome() {
@@ -89,7 +93,7 @@ public class ManagerController {
 	public ModelAndView generList(@RequestParam(defaultValue = "1", value = "page") Integer page,
 			Map<String, Object> map) {
 		PageHelper.startPage(page, 9);
-		List<General> generalList = generalService.findAll();
+		List<General> generalList = generalService.selectAll();
 		PageInfo<General> pageInfo = new PageInfo<>(generalList);
 		List<General> list = pageInfo.getList();
 		map.put("generalList", list);
@@ -175,22 +179,36 @@ public class ManagerController {
 	@GetMapping("/generDetail")
 	public ModelAndView generDetail(@RequestParam(defaultValue = "1", value = "page") Integer page, Integer id,
 			Map<String, Object> map) {
-		General general = generalService.findById(id);
+		General general = generalService.selectById(id);
 		map.put("general", general);
 		map.put("currentPage", page);
 		return new ModelAndView("backstage/gener_detail", map);
 	}
 
 	@PostMapping("/editGener")
-	public void editGener(@RequestParam Integer id, String title, String author, String content) {
-		General general = new General();
-		general.setId(id);
-		general.setTitle(title);
-		general.setAuthor(author);
-		general.setContent(content);
-		generalService.update(general);
+	public String editGener(General general) {
+		try{
+			generalService.update(general);
+			return "修改成功";
+		}catch(Exception e){
+			e.printStackTrace();
+			return "修改失败，请稍后再试";
+		}
 	}
-
+	@GetMapping("/addGeneral")
+	public ModelAndView addGeneral(){
+		return new ModelAndView("backstage/addGeneral");
+	}
+	@PostMapping("/doAddGeneral")
+	public String doAddGeneral(General general){
+		try{
+			generalService.insert(general);
+			return "添加成功";
+		}catch(Exception e){
+			e.printStackTrace();
+			return "添加失败，请稍后重试";
+		}
+	}
 	@GetMapping("/guidInfoDetail")
 	public ModelAndView guidInfoDetail(@RequestParam(defaultValue = "1", value = "page") Integer page, Integer id,
 			Map<String, Object> map) {
@@ -237,21 +255,12 @@ public class ManagerController {
 
 	@PostMapping("/doAddAnno")
 	public void doAddAnno(@RequestParam String title, String author, String content, Integer typeId) {
-		if (typeId == 6) {
-			General general = new General();
-			general.setTitle(title);
-			general.setAuthor(author);
-			general.setContent(content);
-			generalService.save(general);
-		} else {
-			Announcement announcement = new Announcement();
-			announcement.setName(title);
-			announcement.setAuthor(author);
-			announcement.setContent(content);
-			announcement.setRecruidId(typeId);
-			announcementService.insert(announcement);
-		}
-
+		Announcement announcement = new Announcement();
+		announcement.setName(title);
+		announcement.setAuthor(author);
+		announcement.setContent(content);
+		announcement.setRecruidId(typeId);
+		announcementService.insert(announcement);
 	}
 
 	@GetMapping("/addGuidInfo")
@@ -465,5 +474,50 @@ public class ManagerController {
 		}
 		userService.update(user);
 		return "信息修改成功";
+	}
+	@GetMapping("/showBanner")
+	public ModelAndView showBanner(@RequestParam(defaultValue = "1", value = "page") Integer page,Map<String,Object> map){
+		PageHelper.startPage(page,5);
+		List<Banner> bannerList = bannerService.selectAll();
+		PageInfo<Banner> pageInfo = new PageInfo<>(bannerList);
+		List<Banner> list = pageInfo.getList();
+		map.put("bannerList", list);
+		map.put("currentPage", page);
+		map.put("totalPage", pageInfo.getPages());
+		return new ModelAndView("backstage/showBanner",map);
+	}
+	@GetMapping("/addBanner")
+	public ModelAndView addBanner(){
+		return new ModelAndView("backstage/addBanner");
+	}
+	@PostMapping("/doAddBanner")
+	public String doAddBanner(String imgPage,MultipartFile file,HttpServletRequest request){
+		if(file.isEmpty()){
+			return "请选择图片";
+		}
+		try{
+			String filePath = FileUploadUtil.upload(null, file, request);
+			Banner banner = new Banner();
+			banner.setImgPage(imgPage);
+			banner.setImage(filePath);
+			bannerService.insert(banner);
+			return "上传成功";
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return "上传失败，请稍后再试";
+	}
+	@GetMapping("/delBanner")
+	public ModelAndView delBanner(@RequestParam(defaultValue = "1", value = "page") Integer page, Integer id,
+			Map<String, Object> map,HttpServletRequest request) {
+		Banner banner = bannerService.selectById(id);
+		String imagePath = banner.getImage();
+		String realPath = request.getServletContext().getRealPath("/upload");
+		File imgFile = new File(realPath + "/" + imagePath);
+		if(imgFile.exists()){
+			imgFile.delete();
+		}
+		bannerService.deleteById(id);
+		return showBanner(page, map);
 	}
 }

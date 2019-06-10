@@ -26,10 +26,12 @@ public class GuidInfoController {
 	private IGuidInfoService guidInfoService;
 	
 	@GetMapping("/guidInfo")
-	public ModelAndView guidInfo(@RequestParam(value = "page",defaultValue="1" ) Integer page,HttpServletRequest request,Map<String, Object> map){
+	public ModelAndView guidInfo(@RequestParam(value = "page", defaultValue = "1") Integer page,
+			HttpServletRequest request, Map<String, Object> map) {
 		String typeId = request.getParameter("typeId");
 		String guidName = request.getParameter("guidName");
-		PageHelper.startPage(page,10);
+
+		PageHelper.startPage(page, 10);
 		List<GuidInfo> guidInfoList = guidInfoService.selectByTypeId(Integer.parseInt(typeId));
 		PageInfo<GuidInfo> pageInfo = new PageInfo<>(guidInfoList);
 		List<GuidInfo> list = pageInfo.getList();
@@ -37,8 +39,10 @@ public class GuidInfoController {
 		map.put("currentPage", page);
 		map.put("totalPage", pageInfo.getPages());
 		map.put("guidName", guidName);
-		return new ModelAndView("reception/guidInfo",map);
+
+		return new ModelAndView("reception/guidInfo", map);
 	}
+
 	@GetMapping("/guidInfoDetails")
 	public ModelAndView recruitDetails(HttpServletRequest request, Map<String, Object> map) {
 		String id = request.getParameter("id");
@@ -48,11 +52,12 @@ public class GuidInfoController {
 		map.put("guidName", guidName);
 		return new ModelAndView("reception/guidInfo_detail", map);
 	}
+
 	@GetMapping("/guidSearch")
 	public ModelAndView guidSearch(@RequestParam(value = "keyWord", defaultValue = "") String keyWord,
-			Map<String, Object> map){
+			Map<String, Object> map) {
 		List<GuidInfoVO> guidInfoVOList = guidInfoService.searchByKeyWord(keyWord);
 		map.put("guidInfoVOList", guidInfoVOList);
-		return new ModelAndView("reception/guidSearch",map);
+		return new ModelAndView("reception/guidSearch", map);
 	}
 }

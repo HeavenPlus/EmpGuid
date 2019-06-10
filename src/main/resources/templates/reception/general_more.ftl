@@ -31,7 +31,7 @@
 		</div>
 		<ul class="breadcrumb">
 			<li><a href="/EmpGuid/recruit/index">主页</a></li>
-			<li class="active">招聘简章</li>
+			<li class="active">校园宣讲会</li>
 		</ul>
 	</div>
 	<div class="rec_con">		

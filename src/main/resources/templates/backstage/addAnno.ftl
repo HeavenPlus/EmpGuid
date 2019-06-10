@@ -20,8 +20,7 @@
 						<option value="2">实习岗位</option>
 						<option value="3">企业招聘</option>
 						<option value="4">校园招聘</option>
-						<option value="5">校园宣讲会</option>
-						<option value="6">招聘简章</option>
+						<option value="5">招聘简章</option>
 					 </select>
 				</div>
 				<div type="submit" id="save" class="btn btn-default btn-success">提交</div><br><br>

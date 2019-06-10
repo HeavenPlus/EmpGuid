@@ -2,7 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.heaven.dao.extend.GeneralVOMapper">
 	<update id="update" parameterType="com.heaven.bean.General">
-		update general set title = #{title},author=#{author},content=#{content} where id = #{id}
+		update general set title = #{title},author = #{author},content = #{content},start_date = #{startDate},
+		end_date = #{endDate},chara = #{chara},people_num = #{peopleNum},vocation = #{vocation},
+		address = #{address},school = #{school},email = #{email},tel_num = #{telNum} where id = #{id}
 	</update>
 	<insert id="save" parameterType="com.heaven.bean.General" useGeneratedKeys="true"
 		keyProperty="id">
@@ -18,4 +20,15 @@
 		<result column="content" property="content"/>
 		<result column="date" property="date"/>
 	</resultMap>
+	<select id="selectAll" resultType="com.heaven.bean.General">
+		select * from general
+	</select>
+	<select id="selectById" parameterType="int" resultType="com.heaven.bean.General">
+		select * from general where id = #{id}
+	</select>
+	<insert id="insert" parameterType="com.heaven.bean.General" useGeneratedKeys="true"
+		keyProperty="id">
+		insert into general (title,author,content,start_date,end_date,chara,people_num,vocation,address,school,email,tel_num)
+		values(#{title},#{author},#{content},#{startDate},#{endDate},#{chara},#{peopleNum},#{vocation},#{address},#{school},#{email},#{telNum})
+	</insert>
 </mapper>

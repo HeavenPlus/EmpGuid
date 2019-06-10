@@ -41,7 +41,8 @@
 <!--     <table tableName="notes" domainObjectName="Notes" ></table> -->
 <!--     <table tableName="tec_type" domainObjectName="TecType" ></table> -->
 <!--     <table tableName="video_type" domainObjectName="VideoType" ></table> -->
-    <table tableName="video" domainObjectName="Video" ></table>
+<!--     <table tableName="video" domainObjectName="Video" ></table> -->
 <!--     <table tableName="video_comment" domainObjectName="VideoComment" ></table> -->
+    <table tableName="banner" domainObjectName="Banner" ></table>
   </context>
 </generatorConfiguration>

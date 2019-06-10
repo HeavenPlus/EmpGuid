@@ -69,9 +69,9 @@
 		</div>
 	</div>
 	<div class="img_body">
-		<div><img width="360" height="200" src="/EmpGuid/images/resume1.jpg" style="border:1px solid #dfdfdf;"/></div>
-		<div><img width="360" height="200" src="/EmpGuid/images/resume2.jpg" style="border:1px solid #dfdfdf;"/></div>
-		<div><img width="360" height="200" src="/EmpGuid/images/resume3.jpg" style="border:1px solid #dfdfdf;"/></div>
+		<#list bannerList as banner>
+			<div><img width="360" height="200" src="/EmpGuid/upload/${banner.image}" style="border:1px solid #dfdfdf;"/></div>
+		</#list>
 	</div>
 	<a href="/EmpGuid/guidInfo/guidInfo?typeId=1&guidName=简历指导" class="res_more">更多...</a>
 	<a href="/EmpGuid/guidInfo/guidInfo?typeId=2&guidName=面试指导" class="int_more">更多...</a>

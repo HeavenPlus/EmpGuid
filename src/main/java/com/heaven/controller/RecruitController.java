@@ -59,7 +59,7 @@ public class RecruitController {
 	public ModelAndView generalMore(@RequestParam(value = "page", defaultValue = "1") Integer page,
 			Map<String, Object> map) {
 		PageHelper.startPage(page, 10);
-		List<General> generalList = generalService.findAll();
+		List<General> generalList = generalService.selectAll();
 		PageInfo<General> pageInfo = new PageInfo<>(generalList);
 		List<General> list = pageInfo.getList();
 		map.put("generalList", list);
@@ -69,10 +69,13 @@ public class RecruitController {
 	}
 
 	@GetMapping("/generalDetails")
-	public ModelAndView generalDetails(HttpServletRequest request, Map<String, Object> map) {
-		String id = request.getParameter("id");
-		General general = generalService.findById(Integer.parseInt(id));
+	public ModelAndView generalDetails(Integer id, Map<String, Object> map) {
+		General general = generalService.selectById(id);
 		map.put("general", general);
 		return new ModelAndView("reception/general_detail", map);
+	}
+	@GetMapping("/showInfo")
+	public ModelAndView showInfo(Map<String,Object> map){
+		return new ModelAndView("reception/myinfo",map);
 	}
 }

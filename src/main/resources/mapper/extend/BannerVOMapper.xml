@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.heaven.dao.extend.BannerVOMapper">
+	<select id="selectByName" parameterType="String" resultType="com.heaven.bean.Banner">
+		select * from banner where img_page = #{imgPage} order by rand() limit 3 
+	</select>
+	<select id="selectGuidRandom" resultType="com.heaven.bean.Banner">
+		select * from banner where img_page = '简历指导' or img_page = '面试指导' order by rand() limit 3 
+	</select>
+	<select id="selectNotesRandom" resultType="com.heaven.bean.Banner">
+		select * from banner where img_page = '技术文章' order by rand() limit 2 
+	</select>
+</mapper>

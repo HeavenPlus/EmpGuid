@@ -31,8 +31,9 @@
 	</div>
 	<div class="note_body">
 		<div class="img_body" style="width:300px;height:480px;">
-			<img width="298" height="230" src="/EmpGuid/images/spring.jpg" />
-			<img width="298" height="230" src="/EmpGuid/images/mybatis.png" />
+			<#list bannerList as banner>
+				<img width="298" height="230" src="/EmpGuid/upload/${banner.image}" />
+			</#list>
 		</div>
 		<div style="border:1px solid #dfdfdf;width:800px;height:480px;margin-left:10px;">
 			<div class="col-md-12 column">
@@ -40,7 +41,7 @@
 				<thead>
 					<tr>
 						<th style="text-align:center;">标题</th>
-						<th style="text-align:right;">上传日期</th>
+						<th style="text-align:right;">上传发布日期</th>
 					</tr>
 				</thead>
 				<tbody>

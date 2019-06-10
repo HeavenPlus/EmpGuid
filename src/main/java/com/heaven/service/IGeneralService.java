@@ -5,18 +5,12 @@ import java.util.List;
 import com.heaven.bean.General;
 
 public interface IGeneralService {
-
-	/**
-	 * 查询所有
-	 * @return
-	 */
-	List<General> findAll();
 	/**
 	 * 根据id查询
 	 * @param id
 	 * @return
 	 */
-	General findById(Integer id);
+	General selectById(Integer id);
 	/**
 	 * 根据id删除
 	 * @param id
@@ -38,4 +32,14 @@ public interface IGeneralService {
 	 * @return
 	 */
 	List<General> searchByKeyWord(String keyWord);
+	/**
+	 * 查询所有
+	 * @return
+	 */
+	List<General> selectAll();
+	/**
+	 * 插入
+	 * @param general
+	 */
+	void insert(General general);
 }

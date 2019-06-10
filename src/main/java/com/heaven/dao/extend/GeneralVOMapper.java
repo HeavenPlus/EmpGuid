@@ -7,8 +7,15 @@ import org.apache.ibatis.annotations.Param;
 import com.heaven.bean.General;
 
 public interface GeneralVOMapper {
+
 	/**
-	 * 修改
+	 * 根据id查询
+	 * @param id
+	 * @return
+	 */
+	General selectById(Integer id);
+	/**
+	 * 更新
 	 * @param general
 	 */
 	void update(General general);
@@ -22,5 +29,15 @@ public interface GeneralVOMapper {
 	 * @param keyWord
 	 * @return
 	 */
-	List<General> searchByKeyWord(@Param("keyWord")String keyWord);
+	List<General> searchByKeyWord(@Param("keyWord") String keyWord);
+	/**
+	 * 查询所有
+	 * @return
+	 */
+	List<General> selectAll();
+	/**
+	 * 插入
+	 * @param general
+	 */
+	void insert(General general);
 }

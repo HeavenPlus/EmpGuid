@@ -9,7 +9,7 @@
 				 <a href="/EmpGuid/recruit/index">平台首页</a>
 			</li>
 			<li class="first_page">
-				 <a href="/EmpGuid/loginInterceptor/showGuidInfo"`>就业指导</a>
+				 <a href="/EmpGuid/loginInterceptor/showGuidInfo">就业指导</a>
 			</li>
 			<li class="dropdown">
 				 <a href="#" class="dropdown-toggle" data-toggle="dropdown">学习平台<strong class="caret"></strong></a>
@@ -35,7 +35,7 @@
 				<li class="dropdown">
 				 	<a href="#" class="dropdown-toggle" data-toggle="dropdown">用户：${username}<strong class="caret"></strong></a>
 					<ul class="dropdown-menu" style="min-width:100%;">
-						<li><a href="/EmpGuid/logout">修改个人信息</a></li>
+						<li><a href="/EmpGuid/logout">个人信息</a></li>
 						<li class="divider"></li>
 						<li><a href="/EmpGuid/logout">退出登录</a></li>
 					</ul>

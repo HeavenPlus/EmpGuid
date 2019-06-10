@@ -1,10 +1,12 @@
 	$(function(){
 		$(".first_page").mouseover(function(){
 			$(this).addClass("active");
-		})
+		});
 		$(".first_page").mouseleave(function(){
 			$(this).removeClass("active");
-		})
+		});
+		$("#anno_banner div:first-child").attr("class","item active");
+		$("#gen_banner div:first-child").attr("class","item active");
 	})
 	$(function () {
 		$(".dropdown").mouseover(function () {

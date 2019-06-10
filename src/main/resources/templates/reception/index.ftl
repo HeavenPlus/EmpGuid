@@ -16,16 +16,12 @@
 					<li data-slide-to="2" data-target="#carousel-845940">
 					</li>
 				</ol>
-				<div class="carousel-inner">
-					<div class="item active">
-						<img style="width:100%;height:300px;" alt="" src="/EmpGuid/images/banner5.jpg" />
-					</div>
-					<div class="item">
-						<img style="width:100%;height:300px;" alt="" src="/EmpGuid/images/banner4.jpg" />
-					</div>
-					<div class="item">
-						<img style="width:100%;height:300px;" alt="" src="/EmpGuid/images/banner6.jpg" />
-					</div>
+				<div class="carousel-inner" id="anno_banner">
+					<#list annoImgList as annoImg>
+						<div class="item">
+							<img style="width:100%;height:300px;" alt="" src="/EmpGuid/upload/${annoImg.image}" />
+						</div>
+					</#list>
 				</div> <a class="left carousel-control" href="#carousel-845940" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control" href="#carousel-845940" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
 			</div>
 			<div class="row clearfix pad" style="border:1px solid #dfdfdf;">
@@ -45,13 +41,13 @@
 								 <a href="#panel-799135" data-toggle="tab">校园招聘</a>
 							</li>
 							<li>
-								 <a href="#panel-799136" data-toggle="tab">校园宣讲会</a>
+								 <a href="#panel-799136" data-toggle="tab">招聘简章</a>
 							</li>
 						</ul>
 						<div class="tab-content">
 							<div class="tab-pane active" id="panel-913032">
 								<div class="panel panel-default">
-									<div class="panel-body" style="padding:20px;" style="overflow:hidden;">
+									<div class="panel-body" style="padding:20px;height:356px;" style="overflow:hidden;">
 										<table class="table table-hover table-striped">
 											<tbody style="font-size:14px;">
 												<#list announcementList as announcement>
@@ -72,7 +68,7 @@
 							</div>
 							<div class="tab-pane" id="panel-799133">
 								<div class="panel panel-default">
-									<div class="panel-body" style="padding:20px;">
+									<div class="panel-body" style="padding:20px;height:356px;">
 										<table class="table table-hover table-striped">
 											<tbody style="font-size:14px;">
 												<#list announcementList as announcement>
@@ -93,7 +89,7 @@
 							</div>
 							<div class="tab-pane" id="panel-799134">
 								<div class="panel panel-default">
-									<div class="panel-body" style="padding:20px;">
+									<div class="panel-body" style="padding:20px;height:356px;">
 										<table class="table table-hover table-striped">
 											<tbody style="font-size:14px;">
 												<#list announcementList as announcement>
@@ -114,7 +110,7 @@
 							</div>
 							<div class="tab-pane" id="panel-799135">
 								<div class="panel panel-default">
-									<div class="panel-body" style="padding:20px;">
+									<div class="panel-body" style="padding:20px;height:356px;">
 										<table class="table table-hover table-striped">
 											<tbody style="font-size:14px;">
 												<#list announcementList as announcement>
@@ -129,18 +125,18 @@
 										</table>
 									</div>
 									<div class="panel-footer" style="height:55px;">
-										<a href="EmpGuid/recruit/more?recruidId=4&recruitName=校园招聘" class="more">More</a>
+										<a href="/EmpGuid/recruit/more?recruidId=4&recruitName=校园招聘" class="more">More</a>
 									</div>
 								</div>
 							</div>
 							<div class="tab-pane" id="panel-799136">
 								<div class="panel panel-default">
-									<div class="panel-body" style="padding:20px;">
+									<div class="panel-body" style="padding:20px;height:356px;">
 										<table class="table table-hover table-striped">
 											<tbody style="font-size:14px;">
 												<#list announcementList as announcement>
 													<#if announcement.recruidId=5>
-														<tr style="cursor: pointer;" onclick="location.href='/EmpGuid/recruit/recruitDetails?recruitName=校园宣讲会&id='+${announcement.id};">
+														<tr style="cursor: pointer;" onclick="location.href='/EmpGuid/recruit/recruitDetails?recruitName=招聘简章&id='+${announcement.id};">
 															<td>${announcement.name}</td>
 															<td style="text-align:right;">${announcement.date?string('yyyy-MM-dd')}</td>
 														</tr>
@@ -150,7 +146,7 @@
 										</table>
 									</div>
 									<div class="panel-footer" style="height:55px;">
-										<a href="/EmpGuid/recruit/more?recruidId=5&recruitName=校园宣讲会" class="more">More</a>
+										<a href="/EmpGuid/recruit/more?recruidId=5&recruitName=招聘简章" class="more">More</a>
 									</div>
 								</div>
 							</div>
@@ -170,11 +166,11 @@
 		<div class="col-md-8 column" style="margin-top:20px;border:1px solid #dfdfdf;height:485px;padding:0px">
 			<nav class="navbar navbar-default" role="navigation" >
 				<div class="navbar-header">
-					 <span class="navbar-brand" style="font-size:30px">招聘简章</span>
+					 <span class="navbar-brand" style="font-size:30px">校园宣讲会</span>
 				</div>
 			</nav>
 			<div class="panel panel-default">
-				<div class="panel-body" style="padding:20px;">
+				<div class="panel-body" style="padding:20px;height:359px;">
 					<table class="table table-hover table-striped">
 						<tbody style="font-size:14px;">
 							<#list generalList as general>
@@ -201,16 +197,12 @@
 					<li data-slide-to="2" data-target="#carousel-623013">
 					</li>
 				</ol>
-				<div class="carousel-inner">
-					<div class="item">
-						<img alt="" style="height:485px;width:100%;" src="/EmpGuid/images/general1.jpg" />
-					</div>
-					<div class="item active">
-						<img alt="" style="height:485px;width:100%;" src="/EmpGuid/images/general2.jpg" />
-					</div>
-					<div class="item">
-						<img alt="" style="height:485px;width:100%;" src="/EmpGuid/images/general3.jpg" />
-					</div>
+				<div class="carousel-inner" id="gen_banner">
+					<#list genImgList as genImg>
+						<div class="item">
+							<img alt="" style="height:485px;width:100%;" src="/EmpGuid/upload/${genImg.image}" />
+						</div>
+					</#list>
 				</div> <a class="left carousel-control" href="#carousel-623013" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control" href="#carousel-623013" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
 			</div>
 		</div>

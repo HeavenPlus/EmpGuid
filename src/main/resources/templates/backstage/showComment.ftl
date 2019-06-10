@@ -19,7 +19,7 @@
 		<div class="header">
 			<div>视频标题：<font color="#3D3D3D">${videoComment.videoVO.title}</font></div>
 			<div>用户名：<font color="#3D3D3D">${videoComment.username}</font></div>
-			<div>评论日期：<font color="#3D3D3D">${videoComment.date?string('yyyy-MM-dd HH:mm:ss')}</font></div>
+			<div>评论发布日期：<font color="#3D3D3D">${videoComment.date?string('yyyy-MM-dd HH:mm:ss')}</font></div>
 		</div>
 		<div style="width:900px;padding:10px;">
 			评论内容：<font color="#3D3D3D">${videoComment.content}</font>
@@ -32,19 +32,19 @@
 		<#if currentPage lte 1>
 			<li class=disabled><a>上一页</a></li>
 		<#else>
-			<li onclick="openURL('信息列表', '/EmpGuid/manager/annoList?page=${currentPage-1}')"><a>上一页</a></li>
+			<li onclick="openURL('信息列表', '/EmpGuid/manager/showComment?page=${currentPage-1}')"><a>上一页</a></li>
 		</#if>
 		<#list 1..totalPage as index>
 			<#if currentPage==index>
 				<li class=disabled><a>${index}</a></li>
 			<#else>
-				<li onclick="openURL('信息列表', '/EmpGuid/manager/annoList?page=${index}')"><a>${index}</a></li>
+				<li onclick="openURL('信息列表', '/EmpGuid/manager/showComment?page=${index}')"><a>${index}</a></li>
 			</#if>
 		</#list>
 		<#if currentPage gte totalPage>
 			<li class="disabled"><a>下一页</a></li>
 		<#else>
-			<li onclick="openURL('信息列表', '/EmpGuid/manager/annoList?page=${currentPage+1}')"><a>下一页</a></li>
+			<li onclick="openURL('信息列表', '/EmpGuid/manager/showComment?page=${currentPage+1}')"><a>下一页</a></li>
 		</#if>
 	</ul>
 </div>

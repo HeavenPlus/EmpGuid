@@ -56,7 +56,7 @@
 					<tr>
 						<td colspan="3" style="text-align:center;font-size:18px;line-height:30px;">${announcement.name}</td>
 						<td style="text-align:right;font-size:12px;line-height:30px;">来源：${announcement.author}</td>
-						<td style="text-align:right;font-size:12px;line-height:30px;">日期：${announcement.date?string('yyyy-MM-dd')}</td>
+						<td style="text-align:right;font-size:12px;line-height:30px;">发布日期：${announcement.date?string('yyyy-MM-dd')}</td>
 					</tr>
 				</tbody>
 			</table>
