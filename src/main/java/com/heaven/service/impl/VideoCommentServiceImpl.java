@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.heaven.bean.User;
 import com.heaven.bean.VideoComment;
 import com.heaven.bean.extend.VideoCommentVO;
 import com.heaven.dao.VideoCommentMapper;
@@ -16,7 +17,7 @@ public class VideoCommentServiceImpl implements IVideoCommentService {
 	@Autowired
 	private VideoCommentVOMapper videoCommentVOMapper;
 	@Autowired
-	private VideoCommentMapper videoCommentNapper;
+	private VideoCommentMapper videoCommentMapper;
 
 	@Override
 	public void insert(VideoComment videoComment) {
@@ -30,7 +31,22 @@ public class VideoCommentServiceImpl implements IVideoCommentService {
 
 	@Override
 	public void deleteById(Integer id) {
-		videoCommentNapper.deleteByPrimaryKey(id);
+		videoCommentMapper.deleteByPrimaryKey(id);
+	}
+
+	@Override
+	public void updateUserName(User user) {
+		videoCommentVOMapper.updateUserName(user);
+	}
+
+	@Override
+	public List<VideoCommentVO> selectByUserName(String username) {
+		return videoCommentVOMapper.selectByUserName(username);
+	}
+
+	@Override
+	public void updateComment(VideoComment videoComment) {
+		videoCommentVOMapper.updateComment(videoComment);
 	}
 
 }

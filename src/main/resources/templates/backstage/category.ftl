@@ -4,12 +4,6 @@
 			<br>
 			<nav class="navbar navbar-default" role="navigation" id="banner" style="width:800px;margin:0 auto;">
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="float:right;">
-					<form class="navbar-form navbar-left" role="search">
-						<div class="form-group">
-							<input type="text" class="form-control" placeholder="请输入企业名称" autofocus/>
-						</div> 
-						<div type="submit" class="btn btn-default btn-success">搜索</div>
-					</form>
 					<button class="btn btn-default btn-success" style="margin-top:8px;" onclick="openURL('添加信息', '/EmpGuid/manager/addVideoType')">添加</button>
 				</div>
 			</nav>

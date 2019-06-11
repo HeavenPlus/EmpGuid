@@ -35,9 +35,9 @@
 				<li class="dropdown">
 				 	<a href="#" class="dropdown-toggle" data-toggle="dropdown">用户：${username}<strong class="caret"></strong></a>
 					<ul class="dropdown-menu" style="min-width:100%;">
-						<li><a href="/EmpGuid/logout">个人信息</a></li>
+						<li><a href="/EmpGuid/recruit/showInfo?username=${username}" style="text-align:center;">个人信息管理</a></li>
 						<li class="divider"></li>
-						<li><a href="/EmpGuid/logout">退出登录</a></li>
+						<li><a href="/EmpGuid/logout" style="text-align:center;">退出登录</a></li>
 					</ul>
 				</li>
 			<#else>

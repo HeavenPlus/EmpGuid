@@ -1,14 +1,14 @@
-<br><br><br>
-<div style="width:300px;margin:0 auto;">
-	<table style="font-size:16px;">
+<br><br>
+<div style="width:700px;height:350px;margin:0 auto;border:1px solid #919191;padding:20px;">
+	<table style="font-size:16px;margin:0 auto;" >
 		<tr>
 			<td style="width:100px;text-align:right;">用户名：</td>
-			<td style="width:200px;"><input id="username" style="width:200px;height:35px;border-radius:5px;border:1px solid gray;" type="text" value="${userVO.username}"/></td>
+			<td style="width:200px;"><input id="username" style="width:200px;height:35px;border-left-width:0px;border-top-width:0px;border-right-width:0px;border-bottom-color:black;" type="text" value="${userVO.username}"/></td>
 		</tr>
 		<tr><td style="height:25px;" colspan="2"></td></tr>
 		<tr>
 			<td style="width:100px;text-align:right;">密码：</td>
-			<td style="width:200px;"><input id="password" style="width:200px;height:35px;border-radius:5px;border:1px solid gray;" type="text" value="${userVO.password}"/></td>
+			<td style="width:200px;"><input id="password" style="border-left-width:0px;border-top-width:0px;border-right-width:0px;border-bottom-color:black;width:200px;height:35px;" type="text" value="${userVO.password}"/></td>
 		</tr>
 		<tr><td style="height:25px;" colspan="2"></td></tr>
 		<tr>
@@ -22,13 +22,13 @@
 		<tr><td style="height:25px;" colspan="2"></td></tr>
 		<tr>
 			<td style="width:100px;text-align:right;">邮箱：</td>
-			<td style="width:200px;"><input id="email" style="width:200px;height:35px;border-radius:5px;border:1px solid gray;" type="text" value="${userVO.email}"/></td>
+			<td style="width:200px;"><input id="email" style="border-left-width:0px;border-top-width:0px;border-right-width:0px;border-bottom-color:black;width:200px;height:35px;" type="text" value="${userVO.email}"/></td>
 		</tr>
 		<tr><td colspan="2"><input id="id" type="hidden" value="${userVO.id}"></td></tr>
 		<tr><td colspan="2"><input id="typeId" type="hidden" value="2"></td></tr>
 	</table>
 	<br><br>
-	<button type="submit" class="btn btn-default btn-success" id="edit" style="margin:0 130px;width:100px;">修&nbsp;&nbsp;&nbsp;改</button>
+	<button type="submit" class="btn btn-default btn-success" id="edit" style="margin:0 290px;width:100px;">修&nbsp;&nbsp;&nbsp;改</button>
 </div>
 <script>
 	$(function(){
@@ -89,6 +89,7 @@
 			};
 			$.post(url,args,function(data){
 		   		$.messager.alert('提示信息',data,'info');
+		   		window.location.reload();
 			});
 		});
 	})

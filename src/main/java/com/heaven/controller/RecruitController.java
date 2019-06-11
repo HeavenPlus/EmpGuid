@@ -4,9 +4,11 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,8 +18,15 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.heaven.bean.Announcement;
 import com.heaven.bean.General;
+import com.heaven.bean.User;
+import com.heaven.bean.VideoComment;
+import com.heaven.bean.extend.UserVO;
+import com.heaven.bean.extend.VideoCommentVO;
 import com.heaven.service.IAnnouncementService;
 import com.heaven.service.IGeneralService;
+import com.heaven.service.IUserService;
+import com.heaven.service.IVideoCommentService;
+import com.heaven.utils.CookieUtil;
 
 @RestController
 @RequestMapping("/recruit")
@@ -27,6 +36,10 @@ public class RecruitController {
 	private IAnnouncementService announcementService;
 	@Autowired
 	private IGeneralService generalService;
+	@Autowired
+	private IUserService userService;
+	@Autowired
+	private IVideoCommentService videoCommentService;
 
 	@GetMapping("/more")
 	public ModelAndView more(@RequestParam(value = "page", defaultValue = "1") Integer page, HttpServletRequest request,
@@ -75,7 +88,37 @@ public class RecruitController {
 		return new ModelAndView("reception/general_detail", map);
 	}
 	@GetMapping("/showInfo")
-	public ModelAndView showInfo(Map<String,Object> map){
+	public ModelAndView showInfo(String username,Map<String,Object> map){
+		UserVO userVO = userService.login(username);
+		List<VideoCommentVO> VideoCommentVOList = videoCommentService.selectByUserName(username);
+		map.put("userVO", userVO);
+		map.put("VideoCommentVOList", VideoCommentVOList);
 		return new ModelAndView("reception/myinfo",map);
+	}
+	@PostMapping("/editInfo")
+	public String editInfo(User user,HttpServletResponse response) {
+		UserVO userVO = userService.login(user.getUsername());
+		if (userVO != null && !userVO.getUsername().equals(user.getUsername())) {
+			return "用户名已被占用";
+		}
+		userService.update(user);
+		videoCommentService.updateUserName(user);
+		CookieUtil.setCookie(response, "username", user.getUsername(), 7200);
+		return "信息修改成功";
+	}
+	@PostMapping("/editComment")
+	public String editComment(VideoComment videoComment){
+		if(videoComment.getContent().length()<=0){
+			return "内容不能为空";
+		}
+		if(videoComment.getContent().length()>200){
+			return "内容不能超过200个字符";
+		}
+		videoCommentService.updateComment(videoComment);
+		return "修改成功";
+	}
+	@GetMapping("/delComment")
+	public void delComment(Integer id){
+		videoCommentService.deleteById(id);
 	}
 }

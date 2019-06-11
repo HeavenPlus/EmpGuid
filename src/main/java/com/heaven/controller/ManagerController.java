@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -40,6 +41,7 @@ import com.heaven.service.IUserService;
 import com.heaven.service.IVideoCommentService;
 import com.heaven.service.IVideoService;
 import com.heaven.service.IVideoTypeService;
+import com.heaven.utils.CookieUtil;
 import com.heaven.utils.FileUploadUtil;
 
 @RestController
@@ -467,12 +469,14 @@ public class ManagerController {
 	}
 
 	@PostMapping("/editInfo")
-	public String editInfo(User user) {
+	public String editInfo(User user,HttpServletResponse response,HttpServletRequest request) {
 		UserVO userVO = userService.login(user.getUsername());
 		if (userVO != null && !userVO.getUsername().equals(user.getUsername())) {
 			return "用户名已被占用";
 		}
 		userService.update(user);
+		CookieUtil.setCookie(response, "guser", user.getUsername(), 7200);
+		request.setAttribute("guser", user.getUsername());
 		return "信息修改成功";
 	}
 	@GetMapping("/showBanner")

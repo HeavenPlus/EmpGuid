@@ -2,6 +2,7 @@ package com.heaven.dao.extend;
 
 import java.util.List;
 
+import com.heaven.bean.User;
 import com.heaven.bean.VideoComment;
 import com.heaven.bean.extend.VideoCommentVO;
 
@@ -22,4 +23,20 @@ public interface VideoCommentVOMapper {
 	 * @return
 	 */
 	List<VideoCommentVO> selectAll();
+	/**
+	 * 根据用户名修改
+	 * @param user
+	 */
+	void updateUserName(User user);
+	/**
+	 * 根据用户名查询
+	 * @param username
+	 * @return
+	 */
+	List<VideoCommentVO> selectByUserName(String username);
+	/**
+	 * 修改
+	 * @param videoComment
+	 */
+	void updateComment(VideoComment videoComment);
 }

@@ -24,5 +24,13 @@
 		keyProperty="id">
 		insert into video_comment (content, username,video_id,user_id) values(#{content},#{username},#{videoId}, #{userId})
 	</insert>
-	
+	<update id="updateUserName" parameterType="com.heaven.bean.User">
+		update video_comment set username=#{username} where user_id = #{id}
+	</update>
+	<select id="selectByUserName" parameterType="String" resultMap="videoCommentVOMap">
+		select * from video_comment where username = #{username} 
+	</select>
+	<update id="updateComment" parameterType="com.heaven.bean.VideoComment">
+		update video_comment set content=#{content}, username=#{username},video_id=#{videoId},user_id=#{userId} where id = #{id}
+	</update>
 </mapper>
